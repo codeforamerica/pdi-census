@@ -10,13 +10,19 @@ $opaque-brand: #f7f7f7;
 
 .bold-brand-bg {
   background-color: $bold-brand;
+  transition: all 300ms ease;
+  cursor: pointer;
+  &:hover {
+    background-color: #226c4d;
+  }
 }
+
 
 .opaque-brand-color {
   color: $opaque-brand;
 }
 
-.opaque-brand-color {
+.opaque-brand-bg {
   background-color: $opaque-brand;
 }
 
@@ -34,10 +40,31 @@ html {
         color: $bold-brand;
       }
     }
-    table {
-      th {
-        color: $bold-brand;
-        font-weight: bold;
+    main {
+      table {
+        tr th {
+          color: $bold-brand;
+          font-weight: bold;
+          min-width: 80px;
+        }
+        .row-header {
+          min-width: 170px;
+        }
+        td {
+          transition: all 300s ease;
+        }
+      }
+      .table-viz {
+        display: flex;
+        flex-direction: row;
+        .table-data {
+          width: 100%;
+          transition: all 360ms ease;
+        }
+        .table-detail {
+          width: 0%;
+          transition: all 360ms ease;
+        }
       }
     }
     footer {
