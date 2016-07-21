@@ -1,0 +1,57 @@
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web);
+
+$bold-brand: #22416c;
+$opaque-brand: #f7f7f7;
+
+// Some useful atomic CSS
+.bold-brand-color {
+  color: $bold-brand;
+}
+
+.bold-brand-bg {
+  background-color: $bold-brand;
+}
+
+.opaque-brand-color {
+  color: $opaque-brand;
+}
+
+.opaque-brand-color {
+  background-color: $opaque-brand;
+}
+
+html {
+  background-color: $opaque-brand;
+  color: $bold-brand;
+  body {
+    main, header {
+      background-color: $opaque-brand;
+      font-family: "Titillium Web", Helvetica Neue, Helvetica, Arial, sans-serif;
+    }
+    header {
+      padding: 20px 40px;
+      h1 {
+        color: $bold-brand;
+      }
+    }
+    table {
+      th {
+        color: $bold-brand;
+        font-weight: bold;
+      }
+    }
+    footer {
+      background-color: darken($opaque-brand, 20);
+      min-height: 300px;
+      padding: 20px 40px;
+    }
+  }
+  .footer_logo {
+    color: $opaque-brand;
+    text-align: center;
+    padding: 20px 40px;
+    img {
+      max-width: 300px;
+    }
+  }
+}
