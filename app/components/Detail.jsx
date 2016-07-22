@@ -14,6 +14,10 @@ export default class Detail extends Component {
     let display = !this.props.view["State"] ? "none" : "";
     return <div className="table-detail container" style={{display: display}}>
 
+        <div onClick={() => { this.props.handleClick({}) }} className="text-center">
+          <h3>&times;</h3>
+        </div>
+
         <div className="inline-items">
           <p className="data-title">Last Updated:</p>
           &nbsp;
@@ -40,6 +44,11 @@ export default class Detail extends Component {
             boolHeaders.map(function(header) {
               return <div className="inline-items">
                 <p className="data-title">{header}:</p>
+                <p className="text-overflow-clip">
+                {
+                  new Array(95 - header.length).join(".")
+                }
+                </p>
                 &nbsp;
                 <svg height="20" width="40">
                   <rect y="5" width="40" height="20" fill={this.props.view[header] == "Yes" ? "#8BDD3A" : (this.props.view[header] == "No" ? "#DD3D3A" : "#39BEFA") } />

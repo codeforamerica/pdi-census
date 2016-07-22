@@ -49,7 +49,11 @@ export default class Base extends Component {
       const tabletop = Tabletop.init( { key: public_spreadsheet_url, callback: showInfo } );
     }
     handleClick(datum) {
-      this.setState({view: datum})
+      if (datum['Description'] == this.state.view['Description']) {
+        this.setState({view: {}});
+      } else {
+        this.setState({view: datum});
+      }
     }
     render() {
         return <div className="container">
@@ -63,6 +67,7 @@ export default class Base extends Component {
                   <div className="table-viz">
                     <Detail
                       className="table-detail"
+                      handleClick={this.handleClick}
                       view={this.state.view} />
                   </div>
                </div>

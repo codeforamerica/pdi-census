@@ -4,7 +4,7 @@ export default class Table extends Component {
   render() {
     // Build headers
     const headerTh = this.props.headers.map((name) => {
-      return <th>{name}</th>
+      return <th className="col-box">{name}</th>
     });
     const tHead = <thead><tr><th className="row-header">Department</th>{headerTh}</tr></thead>
 
@@ -20,13 +20,13 @@ export default class Table extends Component {
           if (!continueBool) {
             if (report["Type of Data"] === header) {
               // Hook in state manipulation
-              tdBag.push(<td onClick={() => { this.props.handleClick(report) }} className="bold-brand-bg table-data-hover"></td>);
+              tdBag.push(<td onClick={() => { this.props.handleClick(report) }} className="col-box bold-brand-bg table-data-hover"></td>);
               continueBool = true;
             }
           }
         }.bind(this));
         if (!continueBool) {
-          tdBag.push(<td className="opaque-brand-bg"></td>)
+          tdBag.push(<td className="col-box opaque-brand-bg"></td>)
         }
       }.bind(this));
 
