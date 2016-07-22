@@ -39,7 +39,7 @@ export default class Base extends Component {
         });
 
         // Turn our store to JSON to see if it looks good
-        console.log(JSON.stringify(data, null, '\t'));
+        // console.log(JSON.stringify(data, null, '\t'));
 
         // Change our state when the data comes in and is parsed in our store
         this.setState({ data: store });
@@ -54,8 +54,16 @@ export default class Base extends Component {
     render() {
         return <div className="container">
                   <div className="table-viz">
-                    <Table className="table-data" handleClick={this.handleClick} headers={this.state.headers} data={this.state.data} />
-                    <Detail className="table-detail" view={this.state.view} />
+                    <Table
+                      className="table-data"
+                      handleClick={this.handleClick}
+                      headers={this.state.headers}
+                      data={this.state.data} />
+                  </div>
+                  <div className="table-viz">
+                    <Detail
+                      className="table-detail"
+                      view={this.state.view} />
                   </div>
                </div>
               }
