@@ -4,6 +4,12 @@ $bold-brand: #22416c;
 $opaque-brand: #f7f7f7;
 
 // Some useful atomic CSS
+.inline-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .bold-brand-color {
   color: $bold-brand;
 }
@@ -13,7 +19,7 @@ $opaque-brand: #f7f7f7;
   transition: all 300ms ease;
   cursor: pointer;
   &:hover {
-    background-color: #226c4d;
+    background-color: #8BDD3A;
   }
 }
 
@@ -62,8 +68,20 @@ html {
           transition: all 360ms ease;
         }
         .table-detail {
-          width: 0%;
+          background-color: $bold-brand !important;
+          color: $opaque-brand;
+          padding-top: 20px;
+          padding-bottom: 20px;
+          width: 40%;
           transition: all 360ms ease;
+          position:fixed;
+          top:2.5%;
+          right:5px;
+          z-index:100;
+          .data-title {
+            color: lighten($bold-brand, 40);
+            font-weight: bold;
+          }
         }
       }
     }
