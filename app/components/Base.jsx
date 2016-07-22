@@ -54,7 +54,7 @@ export default class Base extends Component {
     render() {
         return <div className="container">
                   <div className="table-viz">
-                    <Table className="table-data" headers={this.state.headers} data={this.state.data} />
+                    <Table className="table-data" handleClick={this.handleClick} headers={this.state.headers} data={this.state.data} />
                     <Detail className="table-detail" view={this.state.view} />
                   </div>
                </div>

@@ -10,12 +10,13 @@ export default class Table extends Component {
 
     // Populate rows
     let trBag = [];
-    for(let city in this.props.data) {
+    // for(let city in this.props.data) {
+    Object.keys(this.props.data).forEach(function(city) {
       let cityData = this.props.data[city];
       let tdBag = [<th className="row-header">{city}</th>];
-      this.props.headers.forEach((header) => {
+      this.props.headers.forEach(function(header) {
         let continueBool = false;
-        cityData.forEach((report) => {
+        cityData.forEach(function(report) {
           if (!continueBool) {
             if (report["Type of Data"] === header) {
               // Hook in state manipulation
@@ -30,7 +31,7 @@ export default class Table extends Component {
       }.bind(this));
 
       trBag.push(<tr>{tdBag}</tr>);
-    }
+    }.bind(this));
 
     // Sort rows A-Z
     trBag.sort((a, b) => {
