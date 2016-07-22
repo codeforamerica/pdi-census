@@ -23,6 +23,10 @@ $opaque-brand: #f7f7f7;
   }
 }
 
+.text-overflow-clip {
+  text-overflow: ellipsis;
+  align-self: flex-start;
+}
 
 .opaque-brand-color {
   color: $opaque-brand;
@@ -48,6 +52,10 @@ html {
     }
     main {
       table {
+        .col-box {
+          min-width: 60px;
+          max-width: 60px;
+        }
         tr th {
           color: $bold-brand;
           font-weight: bold;
@@ -70,12 +78,13 @@ html {
         .table-detail {
           background-color: $bold-brand !important;
           color: $opaque-brand;
-          padding-top: 20px;
-          padding-bottom: 20px;
-          width: 40%;
+          padding-bottom: 5px;
+          width: 35%;
           transition: all 360ms ease;
           position:fixed;
-          top:2.5%;
+          overflow-y: scroll;
+          height: 100%;
+          top:5px;
           right:5px;
           z-index:100;
           .data-title {
