@@ -19874,7 +19874,11 @@
 	  }, {
 	    key: 'handleClick',
 	    value: function handleClick(datum) {
-	      this.setState({ view: datum });
+	      if (datum['Description'] == this.state.view['Description']) {
+	        this.setState({ view: {} });
+	      } else {
+	        this.setState({ view: datum });
+	      }
 	    }
 	  }, {
 	    key: 'render',
@@ -19896,6 +19900,7 @@
 	          { className: 'table-viz' },
 	          _react2.default.createElement(_Detail2.default, {
 	            className: 'table-detail',
+	            handleClick: this.handleClick,
 	            view: this.state.view })
 	        )
 	      );
@@ -20750,7 +20755,7 @@
 	      var headerTh = this.props.headers.map(function (name) {
 	        return _react2.default.createElement(
 	          "th",
-	          null,
+	          { className: "col-box" },
 	          name
 	        );
 	      });
@@ -20789,13 +20794,13 @@
 	                // Hook in state manipulation
 	                tdBag.push(_react2.default.createElement("td", { onClick: function onClick() {
 	                    _this2.props.handleClick(report);
-	                  }, className: "bold-brand-bg table-data-hover" }));
+	                  }, className: "col-box bold-brand-bg table-data-hover" }));
 	                continueBool = true;
 	              }
 	            }
 	          }.bind(this));
 	          if (!continueBool) {
-	            tdBag.push(_react2.default.createElement("td", { className: "opaque-brand-bg" }));
+	            tdBag.push(_react2.default.createElement("td", { className: "col-box opaque-brand-bg" }));
 	          }
 	        }.bind(this));
 
@@ -20897,12 +20902,25 @@
 	  _createClass(Detail, [{
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      console.log(JSON.stringify(this.props.view, null, '\t'));
 	      var boolHeaders = ["Data is machine readable", "Data is freely available online", "Context is provided", "Available in bulk", "Up-to-date", "Incident-level data"];
 	      var display = !this.props.view["State"] ? "none" : "";
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'table-detail container', style: { display: display } },
+	        _react2.default.createElement(
+	          'div',
+	          { onClick: function onClick() {
+	              _this2.props.handleClick({});
+	            }, className: 'text-center' },
+	          _react2.default.createElement(
+	            'h3',
+	            null,
+	            '×'
+	          )
+	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'inline-items' },
@@ -20966,6 +20984,11 @@
 	                { className: 'data-title' },
 	                header,
 	                ':'
+	              ),
+	              _react2.default.createElement(
+	                'p',
+	                { className: 'text-overflow-clip' },
+	                new Array(95 - header.length).join(".")
 	              ),
 	              ' ',
 	              _react2.default.createElement(
