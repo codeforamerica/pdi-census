@@ -19863,7 +19863,7 @@
 	        });
 
 	        // Turn our store to JSON to see if it looks good
-	        console.log(JSON.stringify(data, null, '\t'));
+	        // console.log(JSON.stringify(data, null, '\t'));
 
 	        // Change our state when the data comes in and is parsed in our store
 	        _this2.setState({ data: store });
@@ -19885,8 +19885,18 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'table-viz' },
-	          _react2.default.createElement(_Table2.default, { className: 'table-data', handleClick: this.handleClick, headers: this.state.headers, data: this.state.data }),
-	          _react2.default.createElement(_Detail2.default, { className: 'table-detail', view: this.state.view })
+	          _react2.default.createElement(_Table2.default, {
+	            className: 'table-data',
+	            handleClick: this.handleClick,
+	            headers: this.state.headers,
+	            data: this.state.data })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'table-viz' },
+	          _react2.default.createElement(_Detail2.default, {
+	            className: 'table-detail',
+	            view: this.state.view })
 	        )
 	      );
 	    }
@@ -20887,10 +20897,158 @@
 	  _createClass(Detail, [{
 	    key: 'render',
 	    value: function render() {
+	      console.log(JSON.stringify(this.props.view, null, '\t'));
+	      var boolHeaders = ["Data is machine readable", "Data is freely available online", "Context is provided", "Available in bulk", "Up-to-date", "Incident-level data"];
+	      var display = !this.props.view["State"] ? "none" : "";
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'table-detail' },
-	        JSON.stringify(this.props.view, null, '\t')
+	        { className: 'table-detail container', style: { display: display } },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'inline-items' },
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'data-title' },
+	            'Last Updated:'
+	          ),
+	          ' ',
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            this.props.view["Row last updated"]
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'inline-items' },
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'data-title' },
+	            'Type of Data:'
+	          ),
+	          ' ',
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            this.props.view["Type of Data"]
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          this.props.view["Department"],
+	          ', ',
+	          this.props.view["State"]
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'inline-items' },
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            this.props.view["Description"]
+	          ),
+	          _react2.default.createElement(
+	            'a',
+	            { href: '' + this.props.view["Link"] },
+	            'Source'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { 'class': 'container' },
+	          boolHeaders.map(function (header) {
+	            return _react2.default.createElement(
+	              'div',
+	              { className: 'inline-items' },
+	              _react2.default.createElement(
+	                'p',
+	                { className: 'data-title' },
+	                header,
+	                ':'
+	              ),
+	              ' ',
+	              _react2.default.createElement(
+	                'svg',
+	                { height: '20', width: '40' },
+	                _react2.default.createElement('rect', { y: '5', width: '40', height: '20', fill: this.props.view[header] == "Yes" ? "#8BDD3A" : this.props.view[header] == "No" ? "#DD3D3A" : "#39BEFA" })
+	              )
+	            );
+	          }.bind(this))
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'data-title' },
+	            'Content Available:'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            this.props.view["Content Available"]
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'data-title' },
+	            'Fields Included:'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            this.props.view["Fields Included"]
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'inline-items' },
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'data-title' },
+	            'Available downloads:'
+	          ),
+	          ' ',
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            this.props.view["Available downloads"]
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'inline-items' },
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'data-title' },
+	            'Update frequency:'
+	          ),
+	          ' ',
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            this.props.view["Update frequency"]
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'inline-items' },
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'data-title' },
+	            'Data timeline:'
+	          ),
+	          ' ',
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            this.props.view["Data timeline"]
+	          )
+	        )
 	      );
 	    }
 	  }]);
