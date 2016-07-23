@@ -39,24 +39,19 @@ export default class Detail extends Component {
           <a href={`${this.props.view["Link"]}`}>Source</a>
         </div>
 
-        <div class="container">
+        <ul className="leaders">
           {
             boolHeaders.map(function(header) {
-              return <div className="inline-items">
-                <p className="data-title">{header}:</p>
-                <p className="text-overflow-clip">
-                {
-                  new Array(95 - header.length).join(".")
-                }
-                </p>
-                &nbsp;
-                <svg height="20" width="40">
-                  <rect y="5" width="40" height="20" fill={this.props.view[header] == "Yes" ? "#8BDD3A" : (this.props.view[header] == "No" ? "#DD3D3A" : "#39BEFA") } />
-                </svg>
-              </div>
+              return <li>
+                <span className="data-title">{header}:</span>
+
+                <span><svg height="20" width="40">
+                  <rect y="5" height="20" width="40" fill={this.props.view[header] == "Yes" ? "#8BDD3A" : (this.props.view[header] == "No" ? "#DD3D3A" : "#39BEFA") } />
+                </svg></span>
+              </li>
             }.bind(this))
           }
-        </div>
+        </ul>
 
         <div>
           <p className="data-title">Content Available:</p>
