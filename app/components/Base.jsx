@@ -24,7 +24,6 @@ export default class Base extends Component {
       let showInfo = (_data) => {
         const data = _data["Completed Detailed Data"]["elements"];
         console.log(`Received ${data.length} rows of data 🗃 from https://docs.google.com/spreadsheets/d/${public_spreadsheet_url}`);
-        console.log(_data);
 
         data.forEach((rowObj) => {
           let city = rowObj["Department"];
@@ -49,7 +48,7 @@ export default class Base extends Component {
       const tabletop = Tabletop.init( { key: public_spreadsheet_url, callback: showInfo } );
     }
     handleClick(datum) {
-      if (datum['Description'] == this.state.view['Description']) {
+      if (JSON.stringify(datum, null, '\t') == JSON.stringify(this.state.view, null, '\t')) {
         this.setState({view: {}});
       } else {
         this.setState({view: datum});
