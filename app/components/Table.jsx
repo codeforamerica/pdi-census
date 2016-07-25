@@ -26,7 +26,10 @@ export default class Table extends Component {
           }
         }.bind(this));
         if (!continueBool) {
-          tdBag.push(<td className="col-box opaque-brand-bg"></td>)
+          tdBag.push(<td
+            className="col-box opaque-brand-bg"
+            onClick={() => { this.props.handleClick({}) }}
+            ></td>)
         }
       }.bind(this));
 
