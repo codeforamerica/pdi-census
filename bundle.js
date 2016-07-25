@@ -20978,28 +20978,26 @@
 	          )
 	        ),
 	        _react2.default.createElement(
-	          "div",
-	          { "class": "container" },
+	          "ul",
+	          { className: "leaders" },
 	          boolHeaders.map(function (header) {
 	            return _react2.default.createElement(
-	              "div",
-	              { className: "inline-items" },
+	              "li",
+	              null,
 	              _react2.default.createElement(
-	                "p",
+	                "span",
 	                { className: "data-title" },
 	                header,
 	                ":"
 	              ),
 	              _react2.default.createElement(
-	                "p",
-	                { className: "text-overflow-clip" },
-	                new Array(95 - header.length).join(".")
-	              ),
-	              " ",
-	              _react2.default.createElement(
-	                "svg",
-	                { height: "20", width: "40" },
-	                _react2.default.createElement("rect", { y: "5", width: "40", height: "20", fill: this.props.view[header] == "Yes" ? "#8BDD3A" : this.props.view[header] == "No" ? "#DD3D3A" : "#39BEFA" })
+	                "span",
+	                null,
+	                _react2.default.createElement(
+	                  "svg",
+	                  { height: "20", width: "40" },
+	                  _react2.default.createElement("rect", { y: "5", height: "20", width: "40", fill: this.props.view[header] == "Yes" ? "#8BDD3A" : this.props.view[header] == "No" ? "#DD3D3A" : "#39BEFA" })
+	                )
 	              )
 	            );
 	          }.bind(this))
