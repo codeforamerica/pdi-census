@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 export default class Detail extends Component {
   render() {
-    console.log(JSON.stringify(this.props.view, null, '\t'));
     let boolHeaders = [
       "Data is machine readable",
       "Data is freely available online",
