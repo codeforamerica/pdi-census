@@ -19848,7 +19848,6 @@
 	      var showInfo = function showInfo(_data) {
 	        var data = _data["Completed Detailed Data"]["elements"];
 	        console.log('Received ' + data.length + ' rows of data 🗃 from https://docs.google.com/spreadsheets/d/' + public_spreadsheet_url);
-	        console.log(_data);
 
 	        data.forEach(function (rowObj) {
 	          var city = rowObj["Department"];
@@ -19874,7 +19873,7 @@
 	  }, {
 	    key: 'handleClick',
 	    value: function handleClick(datum) {
-	      if (datum['Description'] == this.state.view['Description']) {
+	      if (JSON.stringify(datum, null, '\t') == JSON.stringify(this.state.view, null, '\t')) {
 	        this.setState({ view: {} });
 	      } else {
 	        this.setState({ view: datum });
@@ -20785,6 +20784,8 @@
 	          city
 	        )];
 	        this.props.headers.forEach(function (header) {
+	          var _this3 = this;
+
 	          var continueBool = false;
 	          cityData.forEach(function (report) {
 	            var _this2 = this;
@@ -20800,7 +20801,12 @@
 	            }
 	          }.bind(this));
 	          if (!continueBool) {
-	            tdBag.push(_react2.default.createElement("td", { className: "col-box opaque-brand-bg" }));
+	            tdBag.push(_react2.default.createElement("td", {
+	              className: "col-box opaque-brand-bg",
+	              onClick: function onClick() {
+	                _this3.props.handleClick({});
+	              }
+	            }));
 	          }
 	        }.bind(this));
 
@@ -20870,7 +20876,7 @@
 /* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -20900,174 +20906,173 @@
 	  }
 
 	  _createClass(Detail, [{
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
 	      var _this2 = this;
 
-	      console.log(JSON.stringify(this.props.view, null, '\t'));
 	      var boolHeaders = ["Data is machine readable", "Data is freely available online", "Context is provided", "Available in bulk", "Up-to-date", "Incident-level data"];
 	      var display = !this.props.view["State"] ? "none" : "";
 	      return _react2.default.createElement(
-	        'div',
-	        { className: 'table-detail container', style: { display: display } },
+	        "div",
+	        { className: "table-detail container", style: { display: display } },
 	        _react2.default.createElement(
-	          'div',
+	          "div",
 	          { onClick: function onClick() {
 	              _this2.props.handleClick({});
-	            }, className: 'text-center' },
+	            }, className: "text-center" },
 	          _react2.default.createElement(
-	            'h3',
+	            "h3",
 	            null,
-	            '×'
+	            "×"
 	          )
 	        ),
 	        _react2.default.createElement(
-	          'div',
-	          { className: 'inline-items' },
+	          "div",
+	          { className: "inline-items" },
 	          _react2.default.createElement(
-	            'p',
-	            { className: 'data-title' },
-	            'Last Updated:'
+	            "p",
+	            { className: "data-title" },
+	            "Last Updated:"
 	          ),
-	          ' ',
+	          " ",
 	          _react2.default.createElement(
-	            'p',
+	            "p",
 	            null,
 	            this.props.view["Row last updated"]
 	          )
 	        ),
 	        _react2.default.createElement(
-	          'div',
-	          { className: 'inline-items' },
+	          "div",
+	          { className: "inline-items" },
 	          _react2.default.createElement(
-	            'p',
-	            { className: 'data-title' },
-	            'Type of Data:'
+	            "p",
+	            { className: "data-title" },
+	            "Type of Data:"
 	          ),
-	          ' ',
+	          " ",
 	          _react2.default.createElement(
-	            'p',
+	            "p",
 	            null,
 	            this.props.view["Type of Data"]
 	          )
 	        ),
 	        _react2.default.createElement(
-	          'h1',
+	          "h1",
 	          null,
 	          this.props.view["Department"],
-	          ', ',
+	          ", ",
 	          this.props.view["State"]
 	        ),
 	        _react2.default.createElement(
-	          'div',
-	          { className: 'inline-items' },
+	          "div",
+	          { className: "inline-items" },
 	          _react2.default.createElement(
-	            'p',
+	            "p",
 	            null,
 	            this.props.view["Description"]
 	          ),
 	          _react2.default.createElement(
-	            'a',
-	            { href: '' + this.props.view["Link"] },
-	            'Source'
+	            "a",
+	            { href: "" + this.props.view["Link"] },
+	            "Source"
 	          )
 	        ),
 	        _react2.default.createElement(
-	          'div',
-	          { 'class': 'container' },
+	          "div",
+	          { "class": "container" },
 	          boolHeaders.map(function (header) {
 	            return _react2.default.createElement(
-	              'div',
-	              { className: 'inline-items' },
+	              "div",
+	              { className: "inline-items" },
 	              _react2.default.createElement(
-	                'p',
-	                { className: 'data-title' },
+	                "p",
+	                { className: "data-title" },
 	                header,
-	                ':'
+	                ":"
 	              ),
 	              _react2.default.createElement(
-	                'p',
-	                { className: 'text-overflow-clip' },
+	                "p",
+	                { className: "text-overflow-clip" },
 	                new Array(95 - header.length).join(".")
 	              ),
-	              ' ',
+	              " ",
 	              _react2.default.createElement(
-	                'svg',
-	                { height: '20', width: '40' },
-	                _react2.default.createElement('rect', { y: '5', width: '40', height: '20', fill: this.props.view[header] == "Yes" ? "#8BDD3A" : this.props.view[header] == "No" ? "#DD3D3A" : "#39BEFA" })
+	                "svg",
+	                { height: "20", width: "40" },
+	                _react2.default.createElement("rect", { y: "5", width: "40", height: "20", fill: this.props.view[header] == "Yes" ? "#8BDD3A" : this.props.view[header] == "No" ? "#DD3D3A" : "#39BEFA" })
 	              )
 	            );
 	          }.bind(this))
 	        ),
 	        _react2.default.createElement(
-	          'div',
+	          "div",
 	          null,
 	          _react2.default.createElement(
-	            'p',
-	            { className: 'data-title' },
-	            'Content Available:'
+	            "p",
+	            { className: "data-title" },
+	            "Content Available:"
 	          ),
 	          _react2.default.createElement(
-	            'p',
+	            "p",
 	            null,
 	            this.props.view["Content Available"]
 	          )
 	        ),
 	        _react2.default.createElement(
-	          'div',
+	          "div",
 	          null,
 	          _react2.default.createElement(
-	            'p',
-	            { className: 'data-title' },
-	            'Fields Included:'
+	            "p",
+	            { className: "data-title" },
+	            "Fields Included:"
 	          ),
 	          _react2.default.createElement(
-	            'p',
+	            "p",
 	            null,
 	            this.props.view["Fields Included"]
 	          )
 	        ),
 	        _react2.default.createElement(
-	          'div',
-	          { className: 'inline-items' },
+	          "div",
+	          { className: "inline-items" },
 	          _react2.default.createElement(
-	            'p',
-	            { className: 'data-title' },
-	            'Available downloads:'
+	            "p",
+	            { className: "data-title" },
+	            "Available downloads:"
 	          ),
-	          ' ',
+	          " ",
 	          _react2.default.createElement(
-	            'p',
+	            "p",
 	            null,
 	            this.props.view["Available downloads"]
 	          )
 	        ),
 	        _react2.default.createElement(
-	          'div',
-	          { className: 'inline-items' },
+	          "div",
+	          { className: "inline-items" },
 	          _react2.default.createElement(
-	            'p',
-	            { className: 'data-title' },
-	            'Update frequency:'
+	            "p",
+	            { className: "data-title" },
+	            "Update frequency:"
 	          ),
-	          ' ',
+	          " ",
 	          _react2.default.createElement(
-	            'p',
+	            "p",
 	            null,
 	            this.props.view["Update frequency"]
 	          )
 	        ),
 	        _react2.default.createElement(
-	          'div',
-	          { className: 'inline-items' },
+	          "div",
+	          { className: "inline-items" },
 	          _react2.default.createElement(
-	            'p',
-	            { className: 'data-title' },
-	            'Data timeline:'
+	            "p",
+	            { className: "data-title" },
+	            "Data timeline:"
 	          ),
-	          ' ',
+	          " ",
 	          _react2.default.createElement(
-	            'p',
+	            "p",
 	            null,
 	            this.props.view["Data timeline"]
 	          )
