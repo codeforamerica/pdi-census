@@ -43,7 +43,10 @@ export default class Base extends Component {
         // console.log(JSON.stringify(data, null, '\t'));
 
         // Event listenisers for resize event
-        
+        window.addEventListener("resize", function() {
+            // Fixed responsiveness
+            this.handleClick(this.state.view);
+        }.bind(this));
 
         // Change our state when the data comes in and is parsed in our store
         this.setState({ data: store });
@@ -51,6 +54,9 @@ export default class Base extends Component {
       }
 
       const tabletop = Tabletop.init( { key: public_spreadsheet_url, callback: showInfo } );
+    }
+    componentWillMount() {
+      window.removeEventListener("resize", () => {});
     }
     handleClick(datum) {
       if (JSON.stringify(datum, null, '\t') == JSON.stringify(this.state.view, null, '\t')) {
