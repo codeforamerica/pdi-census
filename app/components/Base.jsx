@@ -42,6 +42,9 @@ export default class Base extends Component {
         // Turn our store to JSON to see if it looks good
         // console.log(JSON.stringify(data, null, '\t'));
 
+        // Event listenisers for resize event
+        
+
         // Change our state when the data comes in and is parsed in our store
         this.setState({ data: store });
 
