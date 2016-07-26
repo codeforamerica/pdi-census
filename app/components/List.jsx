@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class List extends Component {
   render() {
-    let list = [];
+    let list = [], tags = [];
     let boolHeaders = [ "Data is machine readable", "Data is freely available online", "Context is provided", "Available in bulk", "Up-to-date", "Incident-level data" ];
     console.log(JSON.stringify(this.props.data, null, '\t'));
     for(let department in this.props.data) {
@@ -10,7 +10,15 @@ export default class List extends Component {
         let view = this.props.data[department][i];
 
         // Use # ids to do TOC
-        list.push(<div class="list-item" ref={department}>
+        const tag = [department].concat(view["Type of Data"].split(" ")).join("");
+        tags.push(
+          <p>
+            <a href={"#"+tag}>
+              {view["Department"]}, {view["State"]} - {view["Type of Data"]}
+            </a>
+          </p>);
+
+        list.push(<div className="list-item" id={tag} ref={department}>
 
             <div className="inline-items">
               <p className="data-title">Last Updated:</p>
@@ -18,14 +26,8 @@ export default class List extends Component {
               <p>{view["Row last updated"]}</p>
             </div>
 
-            <div className="inline-items">
-              <p className="data-title">Type of Data:</p>
-              &nbsp;
-              <p>{view["Type of Data"]}</p>
-            </div>
-
             <h1>
-              {view["Department"]}, {view["State"]}
+              {view["Department"]}, {view["State"]} - {view["Type of Data"]}
             </h1>
 
             <div className="inline-items">
@@ -74,6 +76,11 @@ export default class List extends Component {
     return <div className="list-data container">
             <div className="row">
               <div className="col-xs-12">
+              <h1>Table of Contents</h1>
+              <div className="toc">
+                {tags}
+              </div>
+              <hr></hr>
               {list}
               </div>
             </div>
