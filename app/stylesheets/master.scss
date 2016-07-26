@@ -72,10 +72,55 @@ html {
       .table-viz {
         display: flex;
         flex-direction: row;
+        width: 100%;
         .table-data {
           width: 100%;
           transition: all 360ms ease;
         }
+        .list-data {
+          background-color: darken($opaque-brand, 5);
+          width: inherit;
+          .data-title {
+            color: lighten($bold-brand, 40);
+            font-weight: bold;
+          }
+          .toc {
+            height: 250px;
+            overflow: scroll;
+          }
+        }
+        // Dot leaders
+        ul.leaders {
+            max-width: 60em;
+            padding: 0;
+            overflow-x: hidden;
+            list-style: none}
+        ul.leaders li {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+        ul.leaders li:before {
+            float: left;
+            width: 0;
+            margin-left: -225px;
+            white-space: nowrap;
+            content:
+         ". . . . . . . . . . . . . . . . . . . . "
+         ". . . . . . . . . . . . . . . . . . . . "
+         ". . . . . . . . . . . . . . . . . . . . "
+         ". . . . . . . . . . . . . . . . . . . . "
+         ". . . . . . . . . . . . . . . . . . . . "
+         ". . . . . . . . . . . . . . . . . . . . "
+         ". . . . . . . . . . . . . . . . . . . . "}
+        ul.leaders span:first-child {
+            float: left;
+            padding-right: 0.11em;
+            order: -1;}
+        ul.leaders span + span {
+            float: right;
+            padding-left: 0.33em;}
+        // Dot leaders fin
         .table-detail {
           background-color: $bold-brand !important;
           color: $opaque-brand;
@@ -92,35 +137,6 @@ html {
             color: lighten($bold-brand, 40);
             font-weight: bold;
           }
-          ul.leaders {
-              max-width: 60em;
-              padding: 0;
-              overflow-x: hidden;
-              list-style: none}
-          ul.leaders li {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-          }
-          ul.leaders li:before {
-              float: left;
-              width: 0;
-              white-space: nowrap;
-              content:
-           ". . . . . . . . . . . . . . . . . . . . "
-           ". . . . . . . . . . . . . . . . . . . . "
-           ". . . . . . . . . . . . . . . . . . . . "
-           ". . . . . . . . . . . . . . . . . . . . "
-           ". . . . . . . . . . . . . . . . . . . . "
-           ". . . . . . . . . . . . . . . . . . . . "
-           ". . . . . . . . . . . . . . . . . . . . "}
-          ul.leaders span:first-child {
-              float: left;
-              padding-right: 0.33em;
-              order: -1;}
-          ul.leaders span + span {
-              float: right;
-              padding-left: 0.33em;}
         }
       }
     }
