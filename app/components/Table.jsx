@@ -33,15 +33,15 @@ export default class Table extends Component {
         }
       }.bind(this));
 
-      trBag.push(<tr>{tdBag}</tr>);
+      trBag.push(<tr ref={city}>{tdBag}</tr>);
     }.bind(this));
 
     // Sort rows A-Z
     trBag.sort((a, b) => {
-      if (a.props.children[0].props.children > b.props.children[0].props.children) {
+      if (a.ref > b.ref) {
         return 1;
       }
-      if (a.props.children[0].props.children < b.props.children[0].props.children) {
+      if (a.ref < b.ref) {
         return -1;
       }
       return 0;
