@@ -19873,13 +19873,21 @@
 	        // console.log(JSON.stringify(data, null, '\t'));
 
 	        // Event listenisers for resize event
-
+	        window.addEventListener("resize", function () {
+	          // Fixed responsiveness
+	          this.handleClick(this.state.view);
+	        }.bind(_this2));
 
 	        // Change our state when the data comes in and is parsed in our store
 	        _this2.setState({ data: store });
 	      };
 
 	      var tabletop = _tabletop2.default.init({ key: public_spreadsheet_url, callback: showInfo });
+	    }
+	  }, {
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      window.removeEventListener("resize", function () {});
 	    }
 	  }, {
 	    key: 'handleClick',
