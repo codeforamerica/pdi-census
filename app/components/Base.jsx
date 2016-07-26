@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Tabletop from 'tabletop';
 import Table from './Table.jsx';
 import Detail from './Detail.jsx';
+import List from './List.jsx';
+import $ from 'jquery';
 
 export default class Base extends Component {
     constructor(props) {
@@ -55,13 +57,14 @@ export default class Base extends Component {
       }
     }
     render() {
+        const view = ($(window).width() < 960)
+                      ?
+                      <List className="list-data" handleClick={this.handleClick} headers={this.state.headers} data={this.state.data} />
+                      :
+                      <Table className="table-data" handleClick={this.handleClick} headers={this.state.headers} data={this.state.data} />
         return <div className="container">
                   <div className="table-viz">
-                    <Table
-                      className="table-data"
-                      handleClick={this.handleClick}
-                      headers={this.state.headers}
-                      data={this.state.data} />
+                    {view}
                   </div>
                   <div className="table-viz">
                     <Detail

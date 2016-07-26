@@ -2,14 +2,7 @@ import React, { Component } from 'react';
 
 export default class Detail extends Component {
   render() {
-    let boolHeaders = [
-      "Data is machine readable",
-      "Data is freely available online",
-      "Context is provided",
-      "Available in bulk",
-      "Up-to-date",
-      "Incident-level data"
-    ];
+    let boolHeaders = [ "Data is machine readable", "Data is freely available online", "Context is provided", "Available in bulk", "Up-to-date", "Incident-level data" ];
     let display = !this.props.view["State"] ? "none" : "";
     return <div className="table-detail container" style={{display: display}}>
 
@@ -43,41 +36,24 @@ export default class Detail extends Component {
             boolHeaders.map(function(header) {
               return <li>
                 <span className="data-title">{header}:</span>
-                <span><svg height="20" width="40">
-                  <rect y="5" height="20" width="40" fill={this.props.view[header] == "Yes" ? "#8BDD3A" : (this.props.view[header] == "No" ? "#DD3D3A" : "#39BEFA") } />
-                </svg></span>
+                <span>
+                  <svg height="20" width="40">
+                    <rect y="5" height="20" width="40" fill={this.props.view[header] == "Yes" ? "#8BDD3A" : (this.props.view[header] == "No" ? "#DD3D3A" : "#39BEFA") } />
+                  </svg>
+                </span>
               </li>
             }.bind(this))
           }
         </ul>
 
-        <div>
-          <p className="data-title">Content Available:</p>
-          <p>{this.props.view["Content Available"]}</p>
-        </div>
-
-        <div>
-          <p className="data-title">Fields Included:</p>
-          <p>{this.props.view["Fields Included"]}</p>
-        </div>
-
-        <div className="inline-items">
-          <p className="data-title">Available downloads:</p>
-          &nbsp;
-          <p>{this.props.view["Available downloads"]}</p>
-        </div>
-
-        <div className="inline-items">
-          <p className="data-title">Update frequency:</p>
-          &nbsp;
-          <p>{this.props.view["Update frequency"]}</p>
-        </div>
-
-        <div className="inline-items">
-          <p className="data-title">Data timeline:</p>
-          &nbsp;
-          <p>{this.props.view["Data timeline"]}</p>
-        </div>
+        {
+          ["Content Available", "Fields Included", "Available downloads", "Update frequency", "Data timeline"].map((header) => {
+            return <div>
+              <p className="data-title">{header}:</p>
+              <p>{this.props.view[header]}</p>
+            </div>
+          })
+        }
 
     </div>
   }
