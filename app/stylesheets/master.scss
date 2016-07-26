@@ -54,8 +54,8 @@ html {
     main {
       table {
         .col-box {
-          min-width: 60px;
-          max-width: 60px;
+          min-width: 50px;
+          max-width: 50px;
         }
         tr th {
           color: $bold-brand;
@@ -92,7 +92,6 @@ html {
             color: lighten($bold-brand, 40);
             font-weight: bold;
           }
-
           ul.leaders {
               max-width: 60em;
               padding: 0;
