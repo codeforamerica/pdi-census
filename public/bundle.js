@@ -19872,6 +19872,9 @@
 	        // Turn our store to JSON to see if it looks good
 	        // console.log(JSON.stringify(data, null, '\t'));
 
+	        // Event listenisers for resize event
+
+
 	        // Change our state when the data comes in and is parsed in our store
 	        _this2.setState({ data: store });
 	      };
@@ -20817,17 +20820,17 @@
 
 	        trBag.push(_react2.default.createElement(
 	          "tr",
-	          null,
+	          { ref: city },
 	          tdBag
 	        ));
 	      }.bind(this));
 
 	      // Sort rows A-Z
 	      trBag.sort(function (a, b) {
-	        if (a.props.children[0].props.children > b.props.children[0].props.children) {
+	        if (a.ref > b.ref) {
 	          return 1;
 	        }
-	        if (a.props.children[0].props.children < b.props.children[0].props.children) {
+	        if (a.ref < b.ref) {
 	          return -1;
 	        }
 	        return 0;
@@ -21071,7 +21074,8 @@
 	    value: function render() {
 	      var _this2 = this;
 
-	      var list = [];
+	      var list = [],
+	          tags = [];
 	      var boolHeaders = ["Data is machine readable", "Data is freely available online", "Context is provided", "Available in bulk", "Up-to-date", "Incident-level data"];
 	      console.log(JSON.stringify(this.props.data, null, '\t'));
 	      for (var department in this.props.data) {
@@ -21079,9 +21083,24 @@
 	          var view = _this2.props.data[department][i];
 
 	          // Use # ids to do TOC
+	          var tag = [department].concat(view["Type of Data"].split(" ")).join("");
+	          tags.push(_react2.default.createElement(
+	            "p",
+	            null,
+	            _react2.default.createElement(
+	              "a",
+	              { href: "#" + tag },
+	              view["Department"],
+	              ", ",
+	              view["State"],
+	              " - ",
+	              view["Type of Data"]
+	            )
+	          ));
+
 	          list.push(_react2.default.createElement(
 	            "div",
-	            { "class": "list-item", ref: department },
+	            { className: "list-item", id: tag, ref: department },
 	            _react2.default.createElement(
 	              "div",
 	              { className: "inline-items" },
@@ -21098,26 +21117,13 @@
 	              )
 	            ),
 	            _react2.default.createElement(
-	              "div",
-	              { className: "inline-items" },
-	              _react2.default.createElement(
-	                "p",
-	                { className: "data-title" },
-	                "Type of Data:"
-	              ),
-	              " ",
-	              _react2.default.createElement(
-	                "p",
-	                null,
-	                view["Type of Data"]
-	              )
-	            ),
-	            _react2.default.createElement(
 	              "h1",
 	              null,
 	              view["Department"],
 	              ", ",
-	              view["State"]
+	              view["State"],
+	              " - ",
+	              view["Type of Data"]
 	            ),
 	            _react2.default.createElement(
 	              "div",
@@ -21203,6 +21209,17 @@
 	          _react2.default.createElement(
 	            "div",
 	            { className: "col-xs-12" },
+	            _react2.default.createElement(
+	              "h1",
+	              null,
+	              "Table of Contents"
+	            ),
+	            _react2.default.createElement(
+	              "div",
+	              { className: "toc" },
+	              tags
+	            ),
+	            _react2.default.createElement("hr", null),
 	            list
 	          )
 	        )
