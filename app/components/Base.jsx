@@ -39,9 +39,6 @@ export default class Base extends Component {
           }
         });
 
-        // Turn our store to JSON to see if it looks good
-        // console.log(JSON.stringify(data, null, '\t'));
-
         // Event listenisers for resize event
         window.addEventListener("resize", function() {
             // Fixed responsiveness
@@ -66,11 +63,9 @@ export default class Base extends Component {
       }
     }
     render() {
-        const view = ($(window).width() < 960)
-                      ?
-                      <List className="list-data" handleClick={this.handleClick} headers={this.state.headers} data={this.state.data} />
-                      :
-                      <Table className="table-data" handleClick={this.handleClick} headers={this.state.headers} data={this.state.data} />
+        const list = <List className="list-data" handleClick={this.handleClick} headers={this.state.headers} data={this.state.data} />;
+        const table = <Table className="table-data" handleClick={this.handleClick} headers={this.state.headers} data={this.state.data} />;
+        const view = ($(window).width() < 1000) ? list : table;
         return <div className="container">
                   <div className="table-viz">
                     {view}
