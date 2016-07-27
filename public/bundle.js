@@ -19874,9 +19874,6 @@
 	          }
 	        });
 
-	        // Turn our store to JSON to see if it looks good
-	        // console.log(JSON.stringify(data, null, '\t'));
-
 	        // Event listenisers for resize event
 	        window.addEventListener("resize", function () {
 	          // Fixed responsiveness
@@ -19906,7 +19903,9 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var view = (0, _jquery2.default)(window).width() < 960 ? _react2.default.createElement(_List2.default, { className: 'list-data', handleClick: this.handleClick, headers: this.state.headers, data: this.state.data }) : _react2.default.createElement(_Table2.default, { className: 'table-data', handleClick: this.handleClick, headers: this.state.headers, data: this.state.data });
+	      var list = _react2.default.createElement(_List2.default, { className: 'list-data', handleClick: this.handleClick, headers: this.state.headers, data: this.state.data });
+	      var table = _react2.default.createElement(_Table2.default, { className: 'table-data', handleClick: this.handleClick, headers: this.state.headers, data: this.state.data });
+	      var view = (0, _jquery2.default)(window).width() < 1000 ? list : table;
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'container' },
@@ -21007,7 +21006,7 @@
 	        { className: "table-detail container", style: { display: display } },
 	        _react2.default.createElement(
 	          "div",
-	          { onClick: function onClick() {
+	          { style: { cursor: "pointer" }, onClick: function onClick() {
 	              _this2.props.handleClick({});
 	            }, className: "text-center" },
 	          _react2.default.createElement(
@@ -21122,7 +21121,7 @@
 /* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -21152,112 +21151,120 @@
 	  }
 
 	  _createClass(List, [{
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
 	      var _this2 = this;
 
 	      var list = [],
 	          tags = [];
-	      var boolHeaders = ["Data is machine readable", "Data is freely available online", "Context is provided", "Available in bulk", "Up-to-date", "Incident-level data"];
-	      console.log(JSON.stringify(this.props.data, null, '\t'));
+	      var boolHeaders = ['Data is machine readable', 'Data is freely available online', 'Context is provided', 'Available in bulk', 'Up-to-date', 'Incident-level data'];
 	      for (var department in this.props.data) {
+
+	        // Add leading department w/ 0 suffix for better sorting
+	        tags.push(_react2.default.createElement(
+	          'p',
+	          { ref: department + '0' },
+	          department
+	        ));
+
+	        console.log('DEPARTMENT: ' + department);
+
 	        var _loop = function _loop() {
 	          var view = _this2.props.data[department][i];
+	          // Build table of contents
+	          var tag = view['Type of Data'].replace(/\W/g, '');
+	          console.log('CATERGORY: ' + tag);
 
-	          // Use # ids to do TOC
-	          var tag = [department].concat(view["Type of Data"].split(" ")).join("");
 	          tags.push(_react2.default.createElement(
-	            "p",
-	            null,
+	            'p',
+	            { ref: '' + department + (i + 1) },
+	            '  ',
 	            _react2.default.createElement(
-	              "a",
-	              { href: "#" + tag },
-	              view["Department"],
-	              ", ",
-	              view["State"],
-	              " - ",
-	              view["Type of Data"]
+	              'a',
+	              { href: '#' + department + tag },
+	              view['Type of Data']
 	            )
 	          ));
 
+	          // Built list
 	          list.push(_react2.default.createElement(
-	            "div",
-	            { className: "list-item", id: tag, ref: department },
+	            'div',
+	            { className: 'list-item', id: '' + department + tag, ref: department },
 	            _react2.default.createElement(
-	              "div",
-	              { className: "inline-items" },
+	              'div',
+	              { className: 'inline-items' },
 	              _react2.default.createElement(
-	                "p",
-	                { className: "data-title" },
-	                "Last Updated:"
+	                'p',
+	                { className: 'data-title' },
+	                'Last Updated:'
 	              ),
-	              " ",
+	              ' ',
 	              _react2.default.createElement(
-	                "p",
+	                'p',
 	                null,
-	                view["Row last updated"]
+	                view['Row last updated']
 	              )
 	            ),
 	            _react2.default.createElement(
-	              "h1",
+	              'h1',
 	              null,
-	              view["Department"],
-	              ", ",
-	              view["State"],
-	              " - ",
-	              view["Type of Data"]
+	              view['Department'],
+	              ', ',
+	              view['State'],
+	              ' - ',
+	              view['Type of Data']
 	            ),
 	            _react2.default.createElement(
-	              "div",
-	              { className: "inline-items" },
+	              'div',
+	              { className: 'inline-items' },
 	              _react2.default.createElement(
-	                "p",
+	                'p',
 	                null,
-	                view["Description"]
+	                view['Description']
 	              ),
 	              _react2.default.createElement(
-	                "a",
-	                { href: "" + view["Link"] },
-	                "Source"
+	                'a',
+	                { href: '' + view['Link'] },
+	                'Source'
 	              )
 	            ),
 	            _react2.default.createElement(
-	              "ul",
-	              { className: "leaders" },
+	              'ul',
+	              { className: 'leaders' },
 	              boolHeaders.map(function (header) {
 	                return _react2.default.createElement(
-	                  "li",
+	                  'li',
 	                  null,
 	                  _react2.default.createElement(
-	                    "span",
-	                    { className: "data-title" },
+	                    'span',
+	                    { className: 'data-title' },
 	                    header,
-	                    ":"
+	                    ':'
 	                  ),
 	                  _react2.default.createElement(
-	                    "span",
+	                    'span',
 	                    null,
 	                    _react2.default.createElement(
-	                      "svg",
-	                      { height: "20", width: "40" },
-	                      _react2.default.createElement("rect", { y: "5", height: "20", width: "40", fill: view[header] == "Yes" ? "#8BDD3A" : view[header] == "No" ? "#DD3D3A" : "#39BEFA" })
+	                      'svg',
+	                      { height: '20', width: '40' },
+	                      _react2.default.createElement('rect', { y: '5', height: '20', width: '40', fill: view[header] == 'Yes' ? '#8BDD3A' : view[header] == 'No' ? '#DD3D3A' : '#39BEFA' })
 	                    )
 	                  )
 	                );
 	              }.bind(_this2))
 	            ),
-	            ["Content Available", "Fields Included", "Available downloads", "Update frequency", "Data timeline"].map(function (header) {
+	            ['Content Available', 'Fields Included', 'Available downloads', 'Update frequency', 'Data timeline'].map(function (header) {
 	              return _react2.default.createElement(
-	                "div",
+	                'div',
 	                null,
 	                _react2.default.createElement(
-	                  "p",
-	                  { className: "data-title" },
+	                  'p',
+	                  { className: 'data-title' },
 	                  header,
-	                  ":"
+	                  ':'
 	                ),
 	                _react2.default.createElement(
-	                  "p",
+	                  'p',
 	                  null,
 	                  view[header]
 	                )
@@ -21271,8 +21278,17 @@
 	        }
 	      }
 
-	      // Sort rows A-Z
+	      // Sort list and tags (TOC)
 	      list.sort(function (a, b) {
+	        if (a.ref > b.ref) {
+	          return 1;
+	        }
+	        if (a.ref < b.ref) {
+	          return -1;
+	        }
+	        return 0;
+	      });
+	      tags.sort(function (a, b) {
 	        if (a.ref > b.ref) {
 	          return 1;
 	        }
@@ -21283,25 +21299,25 @@
 	      });
 
 	      return _react2.default.createElement(
-	        "div",
-	        { className: "list-data container" },
+	        'div',
+	        { className: 'list-data container' },
 	        _react2.default.createElement(
-	          "div",
-	          { className: "row" },
+	          'div',
+	          { className: 'row' },
 	          _react2.default.createElement(
-	            "div",
-	            { className: "col-xs-12" },
+	            'div',
+	            { className: 'col-xs-12' },
 	            _react2.default.createElement(
-	              "h1",
+	              'h1',
 	              null,
-	              "Table of Contents"
+	              'Table of Contents'
 	            ),
 	            _react2.default.createElement(
-	              "div",
-	              { className: "toc" },
+	              'div',
+	              { className: 'toc' },
 	              tags
 	            ),
-	            _react2.default.createElement("hr", null),
+	            _react2.default.createElement('hr', null),
 	            list
 	          )
 	        )
