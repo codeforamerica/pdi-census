@@ -19,7 +19,7 @@ $opaque-brand: #f7f7f7;
   transition: all 300ms ease;
   cursor: pointer;
   &:hover {
-    background-color: darken($opaque-brand, 20);
+    background-color: darken($opaque-brand, 50);
   }
 }
 

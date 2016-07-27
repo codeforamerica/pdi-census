@@ -6,7 +6,7 @@ export default class Detail extends Component {
     let display = !this.props.view["State"] ? "none" : "";
     return <div className="table-detail container" style={{display: display}}>
 
-        <div onClick={() => { this.props.handleClick({}) }} className="text-center">
+        <div style={{cursor: "pointer"}} onClick={() => { this.props.handleClick({}) }} className="text-center">
           <h3>&times;</h3>
         </div>
 
