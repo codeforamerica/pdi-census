@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TableDatum from './TableDatum.jsx';
 
 export default class Table extends Component {
   render() {
@@ -10,7 +11,7 @@ export default class Table extends Component {
 
     // Populate rows
     let trBag = [];
-    // for(let city in this.props.data) {
+  
     Object.keys(this.props.data).forEach(function(city) {
       let cityData = this.props.data[city];
       let tdBag = [<th className="row-header">{city}</th>];
@@ -20,7 +21,9 @@ export default class Table extends Component {
           if (!continueBool) {
             if (report["Type of Data"] === header) {
               // Hook in state manipulation
-              tdBag.push(<td onClick={() => { this.props.handleClick(report) }} className="col-box bold-brand-bg table-data-hover"></td>);
+              tdBag.push(<td onClick={() => { this.props.handleClick(report) }} className="col-box bold-brand-bg table-data-hover">
+                  <TableDatum report={report} />
+              </td>);
               continueBool = true;
             }
           }

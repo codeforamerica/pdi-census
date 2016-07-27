@@ -19,7 +19,7 @@ $opaque-brand: #f7f7f7;
   transition: all 300ms ease;
   cursor: pointer;
   &:hover {
-    background-color: #8BDD3A;
+    background-color: darken($opaque-brand, 15);
   }
 }
 
@@ -77,6 +77,10 @@ html {
         .table-data {
           width: 100%;
           transition: all 360ms ease;
+          .table-datum {
+            display: flex;
+            justify-content: space-between;
+          }
         }
         .list-data {
           background-color: darken($opaque-brand, 5);
