@@ -19805,15 +19805,15 @@
 
 	var _Table2 = _interopRequireDefault(_Table);
 
-	var _Detail = __webpack_require__(167);
+	var _Detail = __webpack_require__(168);
 
 	var _Detail2 = _interopRequireDefault(_Detail);
 
-	var _List = __webpack_require__(168);
+	var _List = __webpack_require__(169);
 
 	var _List2 = _interopRequireDefault(_List);
 
-	var _jquery = __webpack_require__(169);
+	var _jquery = __webpack_require__(170);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -20734,6 +20734,172 @@
 /* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _TableDatum = __webpack_require__(167);
+
+	var _TableDatum2 = _interopRequireDefault(_TableDatum);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Table = function (_Component) {
+	  _inherits(Table, _Component);
+
+	  function Table() {
+	    _classCallCheck(this, Table);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Table).apply(this, arguments));
+	  }
+
+	  _createClass(Table, [{
+	    key: 'render',
+	    value: function render() {
+	      // Build headers
+	      var headerTh = this.props.headers.map(function (name) {
+	        return _react2.default.createElement(
+	          'th',
+	          { className: 'col-box' },
+	          name
+	        );
+	      });
+	      var tHead = _react2.default.createElement(
+	        'thead',
+	        null,
+	        _react2.default.createElement(
+	          'tr',
+	          null,
+	          _react2.default.createElement(
+	            'th',
+	            { className: 'row-header' },
+	            'Department'
+	          ),
+	          headerTh
+	        )
+	      );
+
+	      // Populate rows
+	      var trBag = [];
+
+	      Object.keys(this.props.data).forEach(function (city) {
+	        var cityData = this.props.data[city];
+	        var tdBag = [_react2.default.createElement(
+	          'th',
+	          { className: 'row-header' },
+	          city
+	        )];
+	        this.props.headers.forEach(function (header) {
+	          var _this3 = this;
+
+	          var continueBool = false;
+	          cityData.forEach(function (report) {
+	            var _this2 = this;
+
+	            if (!continueBool) {
+	              if (report["Type of Data"] === header) {
+	                // Hook in state manipulation
+	                tdBag.push(_react2.default.createElement(
+	                  'td',
+	                  { onClick: function onClick() {
+	                      _this2.props.handleClick(report);
+	                    }, className: 'col-box bold-brand-bg table-data-hover' },
+	                  _react2.default.createElement(_TableDatum2.default, { report: report })
+	                ));
+	                continueBool = true;
+	              }
+	            }
+	          }.bind(this));
+	          if (!continueBool) {
+	            tdBag.push(_react2.default.createElement('td', {
+	              className: 'col-box opaque-brand-bg',
+	              onClick: function onClick() {
+	                _this3.props.handleClick({});
+	              }
+	            }));
+	          }
+	        }.bind(this));
+
+	        trBag.push(_react2.default.createElement(
+	          'tr',
+	          { ref: city },
+	          tdBag
+	        ));
+	      }.bind(this));
+
+	      // Sort rows A-Z
+	      trBag.sort(function (a, b) {
+	        if (a.ref > b.ref) {
+	          return 1;
+	        }
+	        if (a.ref < b.ref) {
+	          return -1;
+	        }
+	        return 0;
+	      });
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'table-data container' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'row' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'col-xs-12' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'table-responsive' },
+	              _react2.default.createElement(
+	                'table',
+	                { summary: 'This is a census of currently available open datasets about police interactions with citizens in the US, including Use of Force, Officer Involved Shootings, and Complaints Against Police.', className: 'table table-bordered table-hover' },
+	                _react2.default.createElement(
+	                  'caption',
+	                  { className: 'text-center' },
+	                  'Want to add or update a dataset? ',
+	                  _react2.default.createElement(
+	                    'a',
+	                    { href: 'https://docs.google.com/a/codeforamerica.org/forms/d/1Qe3UQOPI7w0QxdsVVhy6tTbX5TYMlqc48duP7YP9z6k/viewform' },
+	                    'Click here'
+	                  )
+	                ),
+	                tHead,
+	                _react2.default.createElement(
+	                  'tbody',
+	                  null,
+	                  trBag
+	                )
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Table;
+	}(_react.Component);
+
+	exports.default = Table;
+
+/***/ },
+/* 167 */
+/***/ function(module, exports, __webpack_require__) {
+
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
@@ -20754,142 +20920,41 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Table = function (_Component) {
-	  _inherits(Table, _Component);
+	var TableDatum = function (_Component) {
+	  _inherits(TableDatum, _Component);
 
-	  function Table() {
-	    _classCallCheck(this, Table);
+	  function TableDatum() {
+	    _classCallCheck(this, TableDatum);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Table).apply(this, arguments));
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(TableDatum).apply(this, arguments));
 	  }
 
-	  _createClass(Table, [{
+	  _createClass(TableDatum, [{
 	    key: "render",
 	    value: function render() {
-	      // Build headers
-	      var headerTh = this.props.headers.map(function (name) {
-	        return _react2.default.createElement(
-	          "th",
-	          { className: "col-box" },
-	          name
-	        );
-	      });
-	      var tHead = _react2.default.createElement(
-	        "thead",
-	        null,
-	        _react2.default.createElement(
-	          "tr",
-	          null,
-	          _react2.default.createElement(
-	            "th",
-	            { className: "row-header" },
-	            "Department"
-	          ),
-	          headerTh
-	        )
-	      );
-
-	      // Populate rows
-	      var trBag = [];
-	      // for(let city in this.props.data) {
-	      Object.keys(this.props.data).forEach(function (city) {
-	        var cityData = this.props.data[city];
-	        var tdBag = [_react2.default.createElement(
-	          "th",
-	          { className: "row-header" },
-	          city
-	        )];
-	        this.props.headers.forEach(function (header) {
-	          var _this3 = this;
-
-	          var continueBool = false;
-	          cityData.forEach(function (report) {
-	            var _this2 = this;
-
-	            if (!continueBool) {
-	              if (report["Type of Data"] === header) {
-	                // Hook in state manipulation
-	                tdBag.push(_react2.default.createElement("td", { onClick: function onClick() {
-	                    _this2.props.handleClick(report);
-	                  }, className: "col-box bold-brand-bg table-data-hover" }));
-	                continueBool = true;
-	              }
-	            }
-	          }.bind(this));
-	          if (!continueBool) {
-	            tdBag.push(_react2.default.createElement("td", {
-	              className: "col-box opaque-brand-bg",
-	              onClick: function onClick() {
-	                _this3.props.handleClick({});
-	              }
-	            }));
-	          }
-	        }.bind(this));
-
-	        trBag.push(_react2.default.createElement(
-	          "tr",
-	          { ref: city },
-	          tdBag
-	        ));
-	      }.bind(this));
-
-	      // Sort rows A-Z
-	      trBag.sort(function (a, b) {
-	        if (a.ref > b.ref) {
-	          return 1;
-	        }
-	        if (a.ref < b.ref) {
-	          return -1;
-	        }
-	        return 0;
-	      });
+	      var _this2 = this;
 
 	      return _react2.default.createElement(
 	        "div",
-	        { className: "table-data container" },
-	        _react2.default.createElement(
-	          "div",
-	          { className: "row" },
-	          _react2.default.createElement(
-	            "div",
-	            { className: "col-xs-12" },
-	            _react2.default.createElement(
-	              "div",
-	              { className: "table-responsive" },
-	              _react2.default.createElement(
-	                "table",
-	                { summary: "This is a census of currently available open datasets about police interactions with citizens in the US, including Use of Force, Officer Involved Shootings, and Complaints Against Police.", className: "table table-bordered table-hover" },
-	                _react2.default.createElement(
-	                  "caption",
-	                  { className: "text-center" },
-	                  "Want to add or update a dataset? ",
-	                  _react2.default.createElement(
-	                    "a",
-	                    { href: "https://docs.google.com/a/codeforamerica.org/forms/d/1Qe3UQOPI7w0QxdsVVhy6tTbX5TYMlqc48duP7YP9z6k/viewform" },
-	                    "Click here"
-	                  )
-	                ),
-	                tHead,
-	                _react2.default.createElement(
-	                  "tbody",
-	                  null,
-	                  trBag
-	                )
-	              )
-	            )
-	          )
-	        )
+	        { className: "table-datum" },
+	        ["Data is machine readable", "Data is freely available online", "Context is provided", "Available in bulk", "Up-to-date", "Incident-level data"].map(function (header) {
+	          return _react2.default.createElement(
+	            "svg",
+	            { height: "20", width: "10" },
+	            _react2.default.createElement("rect", { height: "20", width: "10", fill: _this2.props.report[header] == "Yes" ? "#8BDD3A" : _this2.props.report[header] == "No" ? "#DD3D3A" : "#39BEFA" })
+	          );
+	        })
 	      );
 	    }
 	  }]);
 
-	  return Table;
+	  return TableDatum;
 	}(_react.Component);
 
-	exports.default = Table;
+	exports.default = TableDatum;
 
 /***/ },
-/* 167 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21045,7 +21110,7 @@
 	exports.default = Detail;
 
 /***/ },
-/* 168 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21241,7 +21306,7 @@
 	exports.default = List;
 
 /***/ },
-/* 169 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module) {"use strict";var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol?"symbol":typeof obj;};/*eslint-disable no-unused-vars*//*!
@@ -22864,10 +22929,10 @@
 	// (#7102#comment:10, https://github.com/jquery/jquery/pull/557)
 	// and CommonJS for browser emulators (#13566)
 	if(!noGlobal){window.jQuery=window.$=jQuery;}return jQuery;});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(170)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(171)(module)))
 
 /***/ },
-/* 170 */
+/* 171 */
 /***/ function(module, exports) {
 
 	"use strict";
