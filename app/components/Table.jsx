@@ -11,7 +11,7 @@ export default class Table extends Component {
 
     // Populate rows
     let trBag = [];
-  
+
     Object.keys(this.props.data).forEach(function(city) {
       let cityData = this.props.data[city];
       let tdBag = [<th className="row-header">{city}</th>];
@@ -54,7 +54,7 @@ export default class Table extends Component {
             <div className="row">
               <div className="col-xs-12">
                 <div className="table-responsive">
-                  <table summary="This is a census of currently available open datasets about police interactions with citizens in the US, including Use of Force, Officer Involved Shootings, and Complaints Against Police." className="table table-bordered table-hover">
+                  <table id="pdi" summary="This is a census of currently available open datasets about police interactions with citizens in the US, including Use of Force, Officer Involved Shootings, and Complaints Against Police." className="table table-bordered table-hover">
                     <caption className="text-center">Want to add or update a dataset? <a href="https://docs.google.com/a/codeforamerica.org/forms/d/1Qe3UQOPI7w0QxdsVVhy6tTbX5TYMlqc48duP7YP9z6k/viewform">Click here</a></caption>
                     {tHead}
                     <tbody>

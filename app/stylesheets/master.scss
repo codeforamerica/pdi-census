@@ -19,7 +19,7 @@ $opaque-brand: #f7f7f7;
   transition: all 300ms ease;
   cursor: pointer;
   &:hover {
-    background-color: darken($opaque-brand, 15);
+    background-color: darken($opaque-brand, 20);
   }
 }
 
@@ -35,6 +35,7 @@ $opaque-brand: #f7f7f7;
 .opaque-brand-bg {
   background-color: $opaque-brand;
 }
+// atom css fin
 
 // Main styling
 html {
