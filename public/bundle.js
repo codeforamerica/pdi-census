@@ -20822,7 +20822,7 @@
 	                  { onClick: function onClick() {
 	                      _this2.props.handleClick(report);
 	                    }, className: 'col-box bold-brand-bg table-data-hover' },
-	                  _react2.default.createElement(_TableDatum2.default, { report: report })
+	                  _react2.default.createElement(_TableDatum2.default, { svgDimensions: { height: 10, width: 5 }, report: report })
 	                ));
 	                continueBool = true;
 	              }
@@ -20940,15 +20940,15 @@
 
 	      return _react2.default.createElement(
 	        "div",
-	        { className: "table-datum" },
+	        { style: this.props.style, className: "table-datum" },
 	        ["Data is machine readable", "Data is freely available online", "Context is provided", "Available in bulk", "Up-to-date", "Incident-level data"].map(function (header) {
 	          return _react2.default.createElement(
 	            "div",
 	            { "data-toggle": "tooltip", "data-placement": "top", title: header + " - " + _this2.props.report[header] },
 	            _react2.default.createElement(
 	              "svg",
-	              { id: "td" + _this2.props.report['Department'] + header.split(" ").join(""), height: "20", width: "10" },
-	              _react2.default.createElement("rect", { height: "20", width: "10", fill: _this2.props.report[header] == "Yes" ? "#8BDD3A" : _this2.props.report[header] == "No" ? "#DD3D3A" : "#39BEFA" })
+	              { id: "td" + _this2.props.report['Department'] + header.split(" ").join(""), height: "" + _this2.props.svgDimensions.height, width: "" + _this2.props.svgDimensions.height },
+	              _react2.default.createElement("rect", { height: "" + _this2.props.svgDimensions.height, width: "" + _this2.props.svgDimensions.height, fill: _this2.props.report[header] == "Yes" ? "#8BDD3A" : _this2.props.report[header] == "No" ? "#DD3D3A" : "#39BEFA" })
 	            )
 	          );
 	        })
@@ -21133,6 +21133,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _TableDatum = __webpack_require__(167);
+
+	var _TableDatum2 = _interopRequireDefault(_TableDatum);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21167,22 +21171,23 @@
 	          department
 	        ));
 
-	        console.log('DEPARTMENT: ' + department);
-
 	        var _loop = function _loop() {
 	          var view = _this2.props.data[department][i];
 	          // Build table of contents
 	          var tag = view['Type of Data'].replace(/\W/g, '');
-	          console.log('CATERGORY: ' + tag);
-
 	          tags.push(_react2.default.createElement(
-	            'p',
+	            'div',
 	            { ref: '' + department + (i + 1) },
-	            '  ',
 	            _react2.default.createElement(
-	              'a',
-	              { href: '#' + department + tag },
-	              view['Type of Data']
+	              'div',
+	              { style: { display: 'flex', flexDirection: 'row' }, ref: '' + department + (i + 1) },
+	              _react2.default.createElement(_TableDatum2.default, { svgDimensions: { height: 10, width: 5 }, style: { display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '80px', marginLeft: '2em' }, report: view }),
+	              ' ',
+	              _react2.default.createElement(
+	                'a',
+	                { href: '#' + department + tag },
+	                view['Type of Data']
+	              )
 	            )
 	          ));
 

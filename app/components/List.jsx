@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TableDatum from './TableDatum.jsx';
 
 export default class List extends Component {
   render() {
@@ -12,20 +13,19 @@ export default class List extends Component {
             {department}
         </p>);
 
-      console.log(`DEPARTMENT: ${department}`);
       for (var i = 0; i < this.props.data[department].length; i++) {
         let view = this.props.data[department][i];
         // Build table of contents
         const tag = view['Type of Data'].replace(/\W/g, '');
-        console.log(`CATERGORY: ${tag}`);
-
-        tags.push(
-          <p ref={`${department}${i + 1}`}>
-            &emsp;&emsp;
-            <a href={`#${department}${tag}`}>
-              {view['Type of Data']}
-            </a>
-          </p>);
+        tags.push(<div ref={`${department}${i+1}`}>
+            <div style={{display: 'flex', flexDirection: 'row'}} ref={`${department}${i + 1}`}>
+              <TableDatum svgDimensions={{height: 10, width:5}} style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '80px', marginLeft: '2em'}} report={view} />
+              &emsp;
+              <a href={`#${department}${tag}`}>
+                {view['Type of Data']}
+              </a>
+            </div>
+          </div>);
 
         // Built list
         list.push(<div className='list-item' id={`${department}${tag}`} ref={department}>
