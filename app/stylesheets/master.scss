@@ -85,7 +85,6 @@ html {
         }
         .list-data {
           background-color: darken($opaque-brand, 5);
-          width: inherit;
           .data-title {
             color: lighten($bold-brand, 40);
             font-weight: bold;
@@ -97,7 +96,7 @@ html {
         }
         // Dot leaders
         ul.leaders {
-            max-width: 60em;
+            max-width: 30em;
             padding: 0;
             overflow-x: hidden;
             list-style: none}
