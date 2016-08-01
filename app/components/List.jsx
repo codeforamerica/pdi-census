@@ -27,7 +27,7 @@ export default class List extends Component {
             </div>
 			</div>);
 
-        // Built list
+        // Build list
         list.push(<div className='list-item' id={`${department}${tag}`} ref={department}>
 
             <div className='inline-items'>
@@ -69,7 +69,9 @@ export default class List extends Component {
                 </div>
               })
 			}
-          	
+
+			<a className="data-title" href="#">Back to Table of Contents</a>
+
 			<hr></hr>
         </div>);
       }
