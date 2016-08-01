@@ -21274,7 +21274,8 @@
 	                  view[header]
 	                )
 	              );
-	            })
+	            }),
+	            _react2.default.createElement('hr', null)
 	          ));
 	        };
 
