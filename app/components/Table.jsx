@@ -5,7 +5,7 @@ export default class Table extends Component {
   render() {
     // Build headers
     const headerTh = this.props.headers.map((name) => {
-      return <th className="col-box">{name}</th>
+      return <th className="col-box text-center">{name}</th>
     });
     const tHead = <thead><tr><th className="row-header">Department</th>{headerTh}</tr></thead>
 
