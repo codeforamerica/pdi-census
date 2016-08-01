@@ -83,6 +83,8 @@ html {
             justify-content: space-between;
           }
         }
+	  }
+	  .list-viz {
         .list-data {
           background-color: darken($opaque-brand, 5);
           .data-title {
@@ -96,7 +98,7 @@ html {
         }
         // Dot leaders
         ul.leaders {
-            max-width: 30em;
+            max-width: 60em;
             padding: 0;
             overflow-x: hidden;
             list-style: none}
@@ -111,13 +113,13 @@ html {
             margin-left: -210px;
             white-space: nowrap;
             content:
-         ". . . . . . . . . . . . . . . . . . . . "
-         ". . . . . . . . . . . . . . . . . . . . "
-         ". . . . . . . . . . . . . . . . . . . . "
-         ". . . . . . . . . . . . . . . . . . . . "
-         ". . . . . . . . . . . . . . . . . . . . "
-         ". . . . . . . . . . . . . . . . . . . . "
-         ". . . . . . . . . . . . . . . . . . . . "}
+         ". . . . . . . . . . . . . . . . . . . . . . . . . . . "
+         ". . . . . . . . . . . . . . . . . . . . . . . . . . . "
+         ". . . . . . . . . . . . . . . . . . . . . . . . . . . "
+         ". . . . . . . . . . . . . . . . . . . . . . . . . . . "
+         ". . . . . . . . . . . . . . . . . . . . . . . . . . . "
+         ". . . . . . . . . . . . . . . . . . . . . . . . . . . "
+         ". . . . . . . . . . . . . . . . . . . . . . . . . . . "}
         ul.leaders span:first-child {
             float: left;
             padding-right: 0.11em;
@@ -126,6 +128,7 @@ html {
             float: right;
             padding-left: 0.33em;}
         // Dot leaders fin
+	  }
         .table-detail {
           background-color: $bold-brand !important;
           color: $opaque-brand;
@@ -143,7 +146,6 @@ html {
             font-weight: bold;
           }
         }
-      }
     }
     footer {
       background-color: darken($opaque-brand, 20);

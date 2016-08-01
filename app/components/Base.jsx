@@ -65,9 +65,10 @@ export default class Base extends Component {
     render() {
         const list = <List className="list-data" handleClick={this.handleClick} headers={this.state.headers} data={this.state.data} />;
         const table = <Table className="table-data" handleClick={this.handleClick} headers={this.state.headers} data={this.state.data} />;
-        const view = ($(window).width() < 1000) ? list : table;
+		const smallScreen = $(window).width() < 1000;
+        const view = smallScreen ? list : table;
         return <div className="container">
-                  <div className="table-viz">
+                  <div className={smallScreen ? "list-viz" : "table-viz"}>
                     {view}
                   </div>
                   <div className="table-viz">
