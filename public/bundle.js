@@ -19909,7 +19909,7 @@
 	      var view = smallScreen ? list : table;
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'container' },
+	        null,
 	        _react2.default.createElement(
 	          'div',
 	          { className: smallScreen ? "list-viz" : "table-viz" },
