@@ -19905,13 +19905,14 @@
 	    value: function render() {
 	      var list = _react2.default.createElement(_List2.default, { className: 'list-data', handleClick: this.handleClick, headers: this.state.headers, data: this.state.data });
 	      var table = _react2.default.createElement(_Table2.default, { className: 'table-data', handleClick: this.handleClick, headers: this.state.headers, data: this.state.data });
-	      var view = (0, _jquery2.default)(window).width() < 1000 ? list : table;
+	      var smallScreen = (0, _jquery2.default)(window).width() < 1000;
+	      var view = smallScreen ? list : table;
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'container' },
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'table-viz' },
+	          { className: smallScreen ? "list-viz" : "table-viz" },
 	          view
 	        ),
 	        _react2.default.createElement(
@@ -20778,7 +20779,7 @@
 	      var headerTh = this.props.headers.map(function (name) {
 	        return _react2.default.createElement(
 	          'th',
-	          { className: 'col-box' },
+	          { className: 'col-box text-center' },
 	          name
 	        );
 	      });
