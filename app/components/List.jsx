@@ -25,7 +25,7 @@ export default class List extends Component {
                 {view['Type of Data']}
               </a>
             </div>
-          </div>);
+			</div>);
 
         // Built list
         list.push(<div className='list-item' id={`${department}${tag}`} ref={department}>
@@ -61,13 +61,16 @@ export default class List extends Component {
             </ul>
 
             {
-              ['Content Available', 'Fields Included', 'Available downloads', 'Update frequency', 'Data timeline'].map((header) => {
+              ['Content Available', 'Fields Included', 'Available downloads', 'Update frequency', 'Data timeline']
+			  .map((header) => {
                 return <div>
                   <p className='data-title'>{header}:</p>
                   <p>{view[header]}</p>
                 </div>
               })
-            }
+			}
+          	
+			<hr></hr>
         </div>);
       }
     }
@@ -99,8 +102,8 @@ export default class List extends Component {
               <div className='toc'>
                 {tags}
               </div>
-              <hr></hr>
-              {list}
+              <hr></hr> 
+			  {list}
               </div>
             </div>
           </div>
