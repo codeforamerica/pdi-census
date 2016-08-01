@@ -21192,7 +21192,7 @@
 	            )
 	          ));
 
-	          // Built list
+	          // Build list
 	          list.push(_react2.default.createElement(
 	            'div',
 	            { className: 'list-item', id: '' + department + tag, ref: department },
@@ -21276,6 +21276,11 @@
 	                )
 	              );
 	            }),
+	            _react2.default.createElement(
+	              'a',
+	              { className: 'data-title', href: '#' },
+	              'Back to Table of Contents'
+	            ),
 	            _react2.default.createElement('hr', null)
 	          ));
 	        };
