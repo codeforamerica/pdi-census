@@ -12,7 +12,16 @@ export default class Base extends Component {
         // Stateful hold of PDI evaluations
         this.state = {
           data: {},
-          headers: ["Response Time", "Use of Force", "Complaints", "Officer Involved Shootings", "Assaults on Officers", "Citations", "Traffic and Pedestrian Stops", "Pursuits"],
+          headers: [
+            { title: "Response Time", context: "This refers to data on the time it takes for this department to respond to incidents."},
+            { title: "Use of Force", context: "This refers to data on use of force incidents by this department."},
+            { title: "Complaints", context: "This refers to data on complaints issued by citizens towards this department."},
+            { title: "Officer Involved Shootings", context: "This refers to data on officer-involved shootings by this department."},
+            { title: "Assaults on Officers", context: "This refers to data on assaults committed on officers by this department."},
+            { title: "Citations", context: "The refers to data on the citations reported on this department."},
+            { title: "Traffic and Pedestrian Stops", context: "This refers to data on traffic and pedestrian stops by this department."},
+            { title: "Pursuits", context: "This refers to data on pursuits on by officers in this department." }
+          ],
           view: {}
         };
 

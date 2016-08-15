@@ -6,16 +6,23 @@ export default class Table extends Component {
     // Build headers
     const headerTh = this.props.headers
                         .sort((a, b) => {
-                          if (a > b) {
+                          if (a.title > b.title) {
                             return 1;
                           }
-                          if (a < b) {
+                          if (a.title < b.title) {
                             return -1;
                           }
                           return 0;
                         })
                         .map((name) => {
-                          return <th className="col-box text-center">{name}</th>
+
+                          return <th data-toggle="tooltip"
+                                     data-placement="top"
+                                     data-container="body"
+                                     title={name.context}
+                                     className="col-box text-center">
+                            {name.title}
+                          </th>
                         });
     const tHead = <thead><tr><th className="row-header"></th>{headerTh}</tr></thead>
 
@@ -29,7 +36,7 @@ export default class Table extends Component {
         let continueBool = false;
         cityData.forEach(function(report) {
           if (!continueBool) {
-            if (report["Type of Data"] === header) {
+            if (report["Type of Data"] === header.title) {
               // Hook in state manipulation
               tdBag.push(<td onClick={() => { this.props.handleClick(report) }} className="col-box bold-brand-bg table-data-hover">
                   <TableDatum svgDimensions={{height: 10, width:5}} report={report} />
