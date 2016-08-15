@@ -89,6 +89,9 @@ html {
         }
 	  }
 	  .list-viz {
+        .links {
+          text-decoration: underline;
+        }
         .list-data {
           background-color: darken($opaque-brand, 5);
           .data-title {

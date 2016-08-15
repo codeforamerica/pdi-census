@@ -31,7 +31,7 @@ export default class List extends Component {
         list.push(<div className='list-item' id={`${department}${tag}`} ref={department}>
 
             <div className='inline-items'>
-              <p className='data-title'>Last Updated:</p>
+              <p className='data-title links'>Last Updated:</p>
               &nbsp;
               <p>{view['Row last updated']}</p>
             </div>
@@ -70,9 +70,12 @@ export default class List extends Component {
               })
 			}
 
-			<a className="data-title" href="#">Back to Table of Contents</a>
+			<a className="data-title links" href="#"><em>Back to Table of Contents</em></a>
 
-			<hr></hr>
+			<hr style={{borderColor: '#8BDD3A'}}></hr>
+      <hr style={{borderColor: '#DD3D3A'}}></hr>
+      <hr style={{borderColor: '#39BEFA'}}></hr>
+
         </div>);
       }
     }
@@ -104,7 +107,7 @@ export default class List extends Component {
               <div className='toc'>
                 {tags}
               </div>
-              <hr></hr> 
+              <hr></hr>
 			  {list}
               </div>
             </div>
