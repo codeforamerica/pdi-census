@@ -19841,7 +19841,7 @@
 
 	    _this.state = {
 	      data: {},
-	      headers: [{ title: "Response Time", context: "This refers to data on the time it takes for this department to respond to incidents." }, { title: "Use of Force", context: "This refers to data on use of force incidents by this department." }, { title: "Complaints", context: "This refers to data on complaints issued by citizens towards this department." }, { title: "Officer Involved Shootings", context: "This refers to data on officer-involved shootings by this department." }, { title: "Assaults on Officers", context: "This refers to data on assaults committed on officers by this department." }, { title: "Citations", context: "The refers to data on the citations reported on this department." }, { title: "Traffic and Pedestrian Stops", context: "This refers to data on traffic and pedestrian stops by this department." }, { title: "Pursuits", context: "This refers to data on pursuits on by officers in this department." }],
+	      headers: [{ title: "Response Time", context: "This refers to data on the time it takes for this department to respond to incidents." }, { title: "Use of Force", context: "This refers to data on use of force incidents by this department." }, { title: "Complaints", context: "This refers to data on complaints issued by citizens towards this department." }, { title: "Officer Involved Shootings", context: "This refers to data on officer-involved shootings by this department." }, { title: "Assaults on Officers", context: "This refers to data on assaults committed on officers by this department." }, { title: "Citations", context: "This refers to data on the citations reported on this department." }, { title: "Traffic and Pedestrian Stops", context: "This refers to data on traffic and pedestrian stops by this department." }, { title: "Pursuits", context: "This refers to data on pursuits on by officers in this department." }],
 	      view: {}
 	    };
 
@@ -19907,6 +19907,35 @@
 	      var table = _react2.default.createElement(_Table2.default, { className: 'table-data', handleClick: this.handleClick, headers: this.state.headers, data: this.state.data });
 	      var smallScreen = (0, _jquery2.default)(window).width() < 1000;
 	      var view = smallScreen ? list : table;
+	      console.log(this.state.data);
+	      if (!this.state.data["Detroit"]) {
+	        view = _react2.default.createElement(
+	          'div',
+	          { className: 'wrapper' },
+	          _react2.default.createElement(
+	            'svg',
+	            { xmlns: 'http://www.w3.org/2000/svg', width: '100', height: '25', viewBox: '0 0 120 30', fill: '#8BDD3A' },
+	            _react2.default.createElement(
+	              'circle',
+	              { cx: '15', cy: '15', r: '11.8022' },
+	              _react2.default.createElement('animate', { attributeName: 'r', from: '15', to: '15', begin: '0s', dur: '0.8s', values: '15;9;15', calcMode: 'linear', repeatCount: 'indefinite' }),
+	              _react2.default.createElement('animate', { attributeName: 'fill-opacity', from: '1', to: '1', begin: '0s', dur: '0.8s', values: '1;.5;1', calcMode: 'linear', repeatCount: 'indefinite' })
+	            ),
+	            _react2.default.createElement(
+	              'circle',
+	              { cx: '60', cy: '15', r: '12.1978', 'fill-opacity': '0.3' },
+	              _react2.default.createElement('animate', { attributeName: 'r', from: '9', to: '9', begin: '0s', dur: '0.8s', values: '9;15;9', calcMode: 'linear', repeatCount: 'indefinite' }),
+	              _react2.default.createElement('animate', { attributeName: 'fill-opacity', from: '0.5', to: '0.5', begin: '0s', dur: '0.8s', values: '.5;1;.5', calcMode: 'linear', repeatCount: 'indefinite' })
+	            ),
+	            _react2.default.createElement(
+	              'circle',
+	              { cx: '105', cy: '15', r: '11.8022' },
+	              _react2.default.createElement('animate', { attributeName: 'r', from: '15', to: '15', begin: '0s', dur: '0.8s', values: '15;9;15', calcMode: 'linear', repeatCount: 'indefinite' }),
+	              _react2.default.createElement('animate', { attributeName: 'fill-opacity', from: '1', to: '1', begin: '0s', dur: '0.8s', values: '1;.5;1', calcMode: 'linear', repeatCount: 'indefinite' })
+	            )
+	          )
+	        );
+	      }
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -20812,10 +20841,13 @@
 
 	      Object.keys(this.props.data).forEach(function (city) {
 	        var cityData = this.props.data[city];
+	        console.log(cityData);
 	        var tdBag = [_react2.default.createElement(
 	          'th',
 	          { className: 'row-header' },
-	          city
+	          city,
+	          ', ',
+	          cityData[0]['State']
 	        )];
 	        this.props.headers.forEach(function (header) {
 	          var _this3 = this;

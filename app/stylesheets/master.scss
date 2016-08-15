@@ -46,6 +46,11 @@ html {
   background-color: $opaque-brand;
   color: $bold-brand;
   body {
+    .wrapper{
+      text-align: center;
+      margin: 200px auto;
+
+    }
     main, header {
       background-color: $opaque-brand;
       font-family: "Titillium Web", Helvetica Neue, Helvetica, Arial, sans-serif;

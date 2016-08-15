@@ -32,7 +32,7 @@ export default class Table extends Component {
     Object.keys(this.props.data).forEach(function(city) {
       let cityData = this.props.data[city];
       console.log(cityData);
-      let tdBag = [<th className="row-header">{city}</th>];
+      let tdBag = [<th className="row-header">{city}, {cityData[0]['State']}</th>];
       this.props.headers.forEach(function(header) {
         let continueBool = false;
         cityData.forEach(function(report) {
