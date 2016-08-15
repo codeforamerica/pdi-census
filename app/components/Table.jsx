@@ -4,10 +4,20 @@ import TableDatum from './TableDatum.jsx';
 export default class Table extends Component {
   render() {
     // Build headers
-    const headerTh = this.props.headers.map((name) => {
-      return <th className="col-box text-center">{name}</th>
-    });
-    const tHead = <thead><tr><th className="row-header">Department</th>{headerTh}</tr></thead>
+    const headerTh = this.props.headers
+                        .sort((a, b) => {
+                          if (a > b) {
+                            return 1;
+                          }
+                          if (a < b) {
+                            return -1;
+                          }
+                          return 0;
+                        })
+                        .map((name) => {
+                          return <th className="col-box text-center">{name}</th>
+                        });
+    const tHead = <thead><tr><th className="row-header"></th>{headerTh}</tr></thead>
 
     // Populate rows
     let trBag = [];
@@ -49,6 +59,7 @@ export default class Table extends Component {
       }
       return 0;
     });
+
 
     return <div className="table-data container">
             <div className="row">

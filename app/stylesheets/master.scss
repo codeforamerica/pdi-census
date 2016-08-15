@@ -38,6 +38,10 @@ $opaque-brand: #f7f7f7;
 // atom css fin
 
 // Main styling
+.wrapper-fix {
+  overflow-x: hidden;
+}
+
 html {
   background-color: $opaque-brand;
   color: $bold-brand;
