@@ -21205,7 +21205,7 @@
 	              { className: 'inline-items' },
 	              _react2.default.createElement(
 	                'p',
-	                { className: 'data-title' },
+	                { className: 'data-title links' },
 	                'Last Updated:'
 	              ),
 	              ' ',
@@ -21282,10 +21282,16 @@
 	            }),
 	            _react2.default.createElement(
 	              'a',
-	              { className: 'data-title', href: '#' },
-	              'Back to Table of Contents'
+	              { className: 'data-title links', href: '#' },
+	              _react2.default.createElement(
+	                'em',
+	                null,
+	                'Back to Table of Contents'
+	              )
 	            ),
-	            _react2.default.createElement('hr', null)
+	            _react2.default.createElement('hr', { style: { borderColor: '#8BDD3A' } }),
+	            _react2.default.createElement('hr', { style: { borderColor: '#DD3D3A' } }),
+	            _react2.default.createElement('hr', { style: { borderColor: '#39BEFA' } })
 	          ));
 	        };
 
