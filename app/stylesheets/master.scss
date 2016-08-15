@@ -108,32 +108,40 @@ html {
             max-width: 60em;
             padding: 0;
             overflow-x: hidden;
-            list-style: none}
-        ul.leaders li {
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
+            overflow-y: hidden;
+            list-style: none;
+            .blocks {
+              margin-right: 15px;
+            }
+            .data-title {
+              font-size: 18px;
+            }
         }
-        ul.leaders li:before {
-            float: left;
-            width: 0;
-            margin-left: -210px;
-            white-space: nowrap;
-            content:
-         ". . . . . . . . . . . . . . . . . . . . . . . . . . . "
-         ". . . . . . . . . . . . . . . . . . . . . . . . . . . "
-         ". . . . . . . . . . . . . . . . . . . . . . . . . . . "
-         ". . . . . . . . . . . . . . . . . . . . . . . . . . . "
-         ". . . . . . . . . . . . . . . . . . . . . . . . . . . "
-         ". . . . . . . . . . . . . . . . . . . . . . . . . . . "
-         ". . . . . . . . . . . . . . . . . . . . . . . . . . . "}
-        ul.leaders span:first-child {
-            float: left;
-            padding-right: 0.11em;
-            order: -1;}
-        ul.leaders span + span {
-            float: right;
-            padding-left: 0.33em;}
+        // ul.leaders li {
+        //   display: flex;
+        //   flex-direction: row;
+        //   justify-content: space-between;
+        // }
+        // ul.leaders li:before {
+        //     float: left;
+        //     width: 0;
+        //     margin-left: -210px;
+        //     white-space: nowrap;
+        //     content:
+        //  ". . . . . . . . . . . . . . . . . . . . . . . . . . . "
+        //  ". . . . . . . . . . . . . . . . . . . . . . . . . . . "
+        //  ". . . . . . . . . . . . . . . . . . . . . . . . . . . "
+        //  ". . . . . . . . . . . . . . . . . . . . . . . . . . . "
+        //  ". . . . . . . . . . . . . . . . . . . . . . . . . . . "
+        //  ". . . . . . . . . . . . . . . . . . . . . . . . . . . "
+        //  ". . . . . . . . . . . . . . . . . . . . . . . . . . . "}
+        // ul.leaders span:first-child {
+        //     float: left;
+        //     padding-right: 0.11em;
+        //     order: -1;}
+        // ul.leaders span + span {
+        //     float: right;
+        //     padding-left: 0.33em;}
         // Dot leaders fin
 	  }
         .table-detail {

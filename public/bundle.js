@@ -21252,18 +21252,17 @@
 	                  null,
 	                  _react2.default.createElement(
 	                    'span',
-	                    { className: 'data-title' },
-	                    header,
-	                    ':'
+	                    { className: 'blocks' },
+	                    _react2.default.createElement(
+	                      'svg',
+	                      { height: '20', width: '20' },
+	                      _react2.default.createElement('rect', { y: '0', height: '20', width: '20', fill: view[header] == 'Yes' ? '#8BDD3A' : view[header] == 'No' ? '#DD3D3A' : '#39BEFA' })
+	                    )
 	                  ),
 	                  _react2.default.createElement(
 	                    'span',
-	                    null,
-	                    _react2.default.createElement(
-	                      'svg',
-	                      { height: '20', width: '40' },
-	                      _react2.default.createElement('rect', { y: '5', height: '20', width: '40', fill: view[header] == 'Yes' ? '#8BDD3A' : view[header] == 'No' ? '#DD3D3A' : '#39BEFA' })
-	                    )
+	                    { className: 'data-title' },
+	                    header
 	                  )
 	                );
 	              }.bind(_this2))
@@ -21294,9 +21293,9 @@
 	                'Back to Table of Contents'
 	              )
 	            ),
-	            _react2.default.createElement('hr', { style: { borderColor: '#8BDD3A' } }),
-	            _react2.default.createElement('hr', { style: { borderColor: '#DD3D3A' } }),
-	            _react2.default.createElement('hr', { style: { borderColor: '#39BEFA' } })
+	            _react2.default.createElement('hr', { style: { borderWidth: 3, marginBottom: 0, borderColor: '#8BDD3A' } }),
+	            _react2.default.createElement('hr', { style: { borderWidth: 5, marginTop: 0, marginBottom: 0, borderColor: '#DD3D3A' } }),
+	            _react2.default.createElement('hr', { style: { borderWidth: 3, marginTop: 0, borderColor: '#39BEFA' } })
 	          ));
 	        };
 

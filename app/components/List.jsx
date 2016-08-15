@@ -49,12 +49,12 @@ export default class List extends Component {
               {
                 boolHeaders.map(function(header) {
                   return <li>
-                    <span className='data-title'>{header}:</span>
-                    <span>
-                      <svg height='20' width='40'>
-                        <rect y='5' height='20' width='40' fill={view[header] == 'Yes' ? '#8BDD3A' : (view[header] == 'No' ? '#DD3D3A' : '#39BEFA') } />
+                    <span className="blocks">
+                      <svg height='20' width='20'>
+                        <rect y='0' height='20' width='20' fill={view[header] == 'Yes' ? '#8BDD3A' : (view[header] == 'No' ? '#DD3D3A' : '#39BEFA') } />
                       </svg>
                     </span>
+                    <span className='data-title'>{header}</span>
                   </li>
                 }.bind(this))
               }
@@ -72,9 +72,9 @@ export default class List extends Component {
 
 			<a className="data-title links" href="#"><em>Back to Table of Contents</em></a>
 
-			<hr style={{borderColor: '#8BDD3A'}}></hr>
-      <hr style={{borderColor: '#DD3D3A'}}></hr>
-      <hr style={{borderColor: '#39BEFA'}}></hr>
+			<hr style={{borderWidth: 3, marginBottom: 0, borderColor: '#8BDD3A'}}></hr>
+      <hr style={{borderWidth: 5, marginTop: 0, marginBottom: 0, borderColor: '#DD3D3A'}}></hr>
+      <hr style={{borderWidth: 3, marginTop: 0, borderColor: '#39BEFA'}}></hr>
 
         </div>);
       }
