@@ -20776,7 +20776,15 @@
 	    key: 'render',
 	    value: function render() {
 	      // Build headers
-	      var headerTh = this.props.headers.map(function (name) {
+	      var headerTh = this.props.headers.sort(function (a, b) {
+	        if (a > b) {
+	          return 1;
+	        }
+	        if (a < b) {
+	          return -1;
+	        }
+	        return 0;
+	      }).map(function (name) {
 	        return _react2.default.createElement(
 	          'th',
 	          { className: 'col-box text-center' },
@@ -20789,11 +20797,7 @@
 	        _react2.default.createElement(
 	          'tr',
 	          null,
-	          _react2.default.createElement(
-	            'th',
-	            { className: 'row-header' },
-	            'Department'
-	          ),
+	          _react2.default.createElement('th', { className: 'row-header' }),
 	          headerTh
 	        )
 	      );
