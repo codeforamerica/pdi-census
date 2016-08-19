@@ -20864,7 +20864,7 @@
 	                  { onClick: function onClick() {
 	                      _this2.props.handleClick(report);
 	                    }, className: 'col-box bold-brand-bg table-data-hover' },
-	                  _react2.default.createElement(_TableDatum2.default, { svgDimensions: { height: 10, width: 5 }, report: report })
+	                  _react2.default.createElement(_TableDatum2.default, { svgDimensions: { height: 20, width: 10 }, report: report })
 	                ));
 	                continueBool = true;
 	              }
@@ -20989,8 +20989,8 @@
 	            { "data-toggle": "tooltip", "data-placement": "top", title: header + " - " + _this2.props.report[header] },
 	            _react2.default.createElement(
 	              "svg",
-	              { id: "td" + _this2.props.report['Department'] + header.split(" ").join(""), height: "" + _this2.props.svgDimensions.height, width: "" + _this2.props.svgDimensions.height },
-	              _react2.default.createElement("rect", { height: "" + _this2.props.svgDimensions.height, width: "" + _this2.props.svgDimensions.height, fill: _this2.props.report[header] == "Yes" ? "#8BDD3A" : _this2.props.report[header] == "No" ? "#DD3D3A" : "#39BEFA" })
+	              { id: "td" + _this2.props.report['Department'] + header.split(" ").join(""), height: "" + _this2.props.svgDimensions.height, width: "" + _this2.props.svgDimensions.width },
+	              _react2.default.createElement("rect", { height: "" + _this2.props.svgDimensions.height, width: "" + _this2.props.svgDimensions.width, fill: _this2.props.report[header] == "Yes" ? "#8BDD3A" : _this2.props.report[header] == "No" ? "#DD3D3A" : "#39BEFA" })
 	            )
 	          );
 	        })
