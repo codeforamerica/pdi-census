@@ -68,7 +68,6 @@ export default class Table extends Component {
       return 0;
     });
 
-
     return <div className="table-data container">
             <div className="row">
               <div className="col-xs-12">

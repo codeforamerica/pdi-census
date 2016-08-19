@@ -3,6 +3,8 @@ import Tabletop from 'tabletop';
 import Table from './Table.jsx';
 import Detail from './Detail.jsx';
 import List from './List.jsx';
+import Key from './Key.jsx';
+import Legend from './Legend.jsx';
 import $ from 'jquery';
 
 export default class Base extends Component {
@@ -48,7 +50,7 @@ export default class Base extends Component {
           }
         });
 
-        // Event listenisers for resize event
+        // Event listeners for resize event
         window.addEventListener("resize", function() {
             // Fixed responsiveness
             this.handleClick(this.state.view);
@@ -74,16 +76,21 @@ export default class Base extends Component {
     render() {
         const list = <List className="list-data" handleClick={this.handleClick} headers={this.state.headers} data={this.state.data} />;
         const table = <Table className="table-data" handleClick={this.handleClick} headers={this.state.headers} data={this.state.data} />;
-		const smallScreen = $(window).width() < 1000;
+        const smallScreen = $(window).width() < 1000;
         let view = smallScreen ? list : table;
-        console.log(this.state.data);
-        if (!this.state.data["Detroit"]) {
+
+        // If we haven't loaded in the data yet, shown a loading SVG animation
+        if (!this.state.data) {
           view = <div className="wrapper">
             <svg xmlns="http://www.w3.org/2000/svg" width="100" height="25" viewBox="0 0 120 30" fill="#8BDD3A"><circle cx="15" cy="15" r="11.8022"><animate attributeName="r" from="15" to="15" begin="0s" dur="0.8s" values="15;9;15" calcMode="linear" repeatCount="indefinite"/><animate attributeName="fill-opacity" from="1" to="1" begin="0s" dur="0.8s" values="1;.5;1" calcMode="linear" repeatCount="indefinite"/></circle><circle cx="60" cy="15" r="12.1978" fill-opacity="0.3"><animate attributeName="r" from="9" to="9" begin="0s" dur="0.8s" values="9;15;9" calcMode="linear" repeatCount="indefinite"/><animate attributeName="fill-opacity" from="0.5" to="0.5" begin="0s" dur="0.8s" values=".5;1;.5" calcMode="linear" repeatCount="indefinite"/></circle><circle cx="105" cy="15" r="11.8022"><animate attributeName="r" from="15" to="15" begin="0s" dur="0.8s" values="15;9;15" calcMode="linear" repeatCount="indefinite"/><animate attributeName="fill-opacity" from="1" to="1" begin="0s" dur="0.8s" values="1;.5;1" calcMode="linear" repeatCount="indefinite"/></circle></svg>
           </div>
         }
         return <div>
-                  <div className={smallScreen ? "list-viz" : "table-viz"}>
+                  <div className={ smallScreen ? "list-viz" : "table-viz" }>
+                    <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-around" }} className="header">
+                      <Key svgDimensions={{ height: 20, width: 10 }} />
+                      <Legend svgDimensions={{ height: 20, width: 10 }} />
+                    </div>
                     {view}
                   </div>
                   <div className="table-viz">

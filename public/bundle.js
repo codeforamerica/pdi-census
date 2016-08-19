@@ -58,9 +58,9 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	global.jQuery = __webpack_require__(170);
-	global.$ = __webpack_require__(170);
-	__webpack_require__(172);
+	global.jQuery = __webpack_require__(172);
+	global.$ = __webpack_require__(172);
+	__webpack_require__(174);
 
 	// Where our React app touches our HTML
 	var entryDiv = document.getElementById('census-portal');
@@ -19818,7 +19818,15 @@
 
 	var _List2 = _interopRequireDefault(_List);
 
-	var _jquery = __webpack_require__(170);
+	var _Key = __webpack_require__(170);
+
+	var _Key2 = _interopRequireDefault(_Key);
+
+	var _Legend = __webpack_require__(171);
+
+	var _Legend2 = _interopRequireDefault(_Legend);
+
+	var _jquery = __webpack_require__(172);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -19874,7 +19882,7 @@
 	          }
 	        });
 
-	        // Event listenisers for resize event
+	        // Event listeners for resize event
 	        window.addEventListener("resize", function () {
 	          // Fixed responsiveness
 	          this.handleClick(this.state.view);
@@ -19907,8 +19915,9 @@
 	      var table = _react2.default.createElement(_Table2.default, { className: 'table-data', handleClick: this.handleClick, headers: this.state.headers, data: this.state.data });
 	      var smallScreen = (0, _jquery2.default)(window).width() < 1000;
 	      var view = smallScreen ? list : table;
-	      console.log(this.state.data);
-	      if (!this.state.data["Detroit"]) {
+
+	      // If we haven't loaded in the data yet, shown a loading SVG animation
+	      if (!this.state.data) {
 	        view = _react2.default.createElement(
 	          'div',
 	          { className: 'wrapper' },
@@ -19942,6 +19951,12 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: smallScreen ? "list-viz" : "table-viz" },
+	          _react2.default.createElement(
+	            'div',
+	            { style: { display: "flex", flexDirection: "row", justifyContent: "space-around" }, className: 'header' },
+	            _react2.default.createElement(_Key2.default, { svgDimensions: { height: 20, width: 10 } }),
+	            _react2.default.createElement(_Legend2.default, { svgDimensions: { height: 20, width: 10 } })
+	          ),
 	          view
 	        ),
 	        _react2.default.createElement(
@@ -21390,6 +21405,170 @@
 
 /***/ },
 /* 170 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Key = function (_Component) {
+	  _inherits(Key, _Component);
+
+	  function Key() {
+	    _classCallCheck(this, Key);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Key).apply(this, arguments));
+	  }
+
+	  _createClass(Key, [{
+	    key: "render",
+	    value: function render() {
+	      var _this2 = this;
+
+	      var signs = [{ hex: "#8BDD3A", text: "Yes" }, { hex: "#DD3D3A", text: "No" }, { hex: "#39BEFA", text: "Unsure" }].map(function (data) {
+	        return _react2.default.createElement(
+	          "div",
+	          { className: "key-datum", "data-toggle": "tooltip", "data-placement": "top" },
+	          _react2.default.createElement(
+	            "svg",
+	            { height: "" + _this2.props.svgDimensions.height, width: "" + _this2.props.svgDimensions.width },
+	            _react2.default.createElement("rect", { height: "" + _this2.props.svgDimensions.height, width: "" + _this2.props.svgDimensions.width, fill: data.hex })
+	          ),
+	          _react2.default.createElement(
+	            "p",
+	            null,
+	            data.text
+	          )
+	        );
+	      });
+	      return _react2.default.createElement(
+	        "div",
+	        null,
+	        _react2.default.createElement(
+	          "div",
+	          null,
+	          _react2.default.createElement(
+	            "p",
+	            null,
+	            _react2.default.createElement(
+	              "strong",
+	              null,
+	              "Keys"
+	            )
+	          ),
+	          signs
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Key;
+	}(_react.Component);
+
+	exports.default = Key;
+
+/***/ },
+/* 171 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _jquery = __webpack_require__(172);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Legend = function (_Component) {
+	  _inherits(Legend, _Component);
+
+	  function Legend() {
+	    _classCallCheck(this, Legend);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Legend).apply(this, arguments));
+	  }
+
+	  _createClass(Legend, [{
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      var smallScreen = (0, _jquery2.default)(window).width() < 1000;
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          _react2.default.createElement(
+	            'strong',
+	            null,
+	            'Data qualities (' + (smallScreen ? "click" : "hover over") + ' to see description):'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { style: { display: "flex", flexDirection: "row" } },
+	          ["This first label is concerned with whether the data is machine readable (PDF, CSV, XML, etc).", "This second label is concerned with whether the data is freely available online and not behind a paywall or authorization wall.", "This third label is concerned with whether the data has context / meta text provided.", "This fourth label is concerned with whether the data is available in bulk (the whole dataset can be downloaded at once).", "This fifth label is concerned with whether the data is reasonably up-to-date (within past year).", "This sixth label is concerned with whether the data is incident-level data, i.e. information about each individual complaint or traffic stop, rather than an aggregated count of incidents."].map(function (header, index) {
+	            return _react2.default.createElement(
+	              'div',
+	              { style: { marginRight: 5 }, 'data-toggle': 'tooltip', 'data-placement': 'bottom', title: header },
+	              _react2.default.createElement(
+	                'svg',
+	                { height: '' + _this2.props.svgDimensions.height, width: '' + _this2.props.svgDimensions.width },
+	                _react2.default.createElement('rect', { height: '' + _this2.props.svgDimensions.height, width: '' + _this2.props.svgDimensions.width, fill: '#22416c' }),
+	                _react2.default.createElement(
+	                  'text',
+	                  { x: '1.1', y: '15', 'font-size': '30', fill: 'white' },
+	                  index + 1
+	                )
+	              )
+	            );
+	          })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Legend;
+	}(_react.Component);
+
+	exports.default = Legend;
+
+/***/ },
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module) {"use strict";var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol?"symbol":typeof obj;};/*eslint-disable no-unused-vars*//*!
@@ -23012,10 +23191,10 @@
 	// (#7102#comment:10, https://github.com/jquery/jquery/pull/557)
 	// and CommonJS for browser emulators (#13566)
 	if(!noGlobal){window.jQuery=window.$=jQuery;}return jQuery;});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(171)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(173)(module)))
 
 /***/ },
-/* 171 */
+/* 173 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -23032,14 +23211,12 @@
 	};
 
 /***/ },
-/* 172 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	// This file is autogenerated via the `commonjs` Grunt task. You can require() this file in a CommonJS environment.
-	__webpack_require__(173);
-	__webpack_require__(174);
 	__webpack_require__(175);
 	__webpack_require__(176);
 	__webpack_require__(177);
@@ -23050,9 +23227,11 @@
 	__webpack_require__(182);
 	__webpack_require__(183);
 	__webpack_require__(184);
+	__webpack_require__(185);
+	__webpack_require__(186);
 
 /***/ },
-/* 173 */
+/* 175 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -23120,7 +23299,7 @@
 	}(jQuery);
 
 /***/ },
-/* 174 */
+/* 176 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -23212,7 +23391,7 @@
 	}(jQuery);
 
 /***/ },
-/* 175 */
+/* 177 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -23337,7 +23516,7 @@
 	}(jQuery);
 
 /***/ },
-/* 176 */
+/* 178 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -23572,7 +23751,7 @@
 	}(jQuery);
 
 /***/ },
-/* 177 */
+/* 179 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -23761,7 +23940,7 @@
 	}(jQuery);
 
 /***/ },
-/* 178 */
+/* 180 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -23918,7 +24097,7 @@
 	}(jQuery);
 
 /***/ },
-/* 179 */
+/* 181 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -24231,7 +24410,7 @@
 	}(jQuery);
 
 /***/ },
-/* 180 */
+/* 182 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -24728,7 +24907,7 @@
 	}(jQuery);
 
 /***/ },
-/* 181 */
+/* 183 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -24836,7 +25015,7 @@
 	}(jQuery);
 
 /***/ },
-/* 182 */
+/* 184 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -24996,7 +25175,7 @@
 	}(jQuery);
 
 /***/ },
-/* 183 */
+/* 185 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -25131,7 +25310,7 @@
 	}(jQuery);
 
 /***/ },
-/* 184 */
+/* 186 */
 /***/ function(module, exports) {
 
 	'use strict';
