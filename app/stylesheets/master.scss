@@ -66,6 +66,7 @@ html {
         .col-box {
           min-width: 50px;
           max-width: 50px;
+          padding: 2px 4px;
         }
         tr th {
           color: $bold-brand;
@@ -90,6 +91,8 @@ html {
           .table-datum {
             display: flex;
             justify-content: space-between;
+            position: relative;
+            top: 5px;
           }
         }
 	  }

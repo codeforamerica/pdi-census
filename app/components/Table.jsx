@@ -40,7 +40,7 @@ export default class Table extends Component {
             if (report["Type of Data"] === header.title) {
               // Hook in state manipulation
               tdBag.push(<td onClick={() => { this.props.handleClick(report) }} className="col-box bold-brand-bg table-data-hover">
-                  <TableDatum svgDimensions={{height: 10, width:5}} report={report} />
+                  <TableDatum svgDimensions={{ height: 20, width: 10 }} report={ report } />
               </td>);
               continueBool = true;
             }
